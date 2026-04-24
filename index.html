@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>云锦长安 · 耗材库存管理</title>
 <style>
-/* ===== FONTS (本地回退，不依赖外网) ===== */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600&family=ZCOOL+XiaoWei&display=swap');
-
 :root{
   --ink:#1a1208;--ink2:#3d2e1a;--ink3:#7a6346;
   --gold:#b8860b;--gold2:#d4a843;--gold-pale:#fdf6e8;--gold-light:#f5e9cc;
@@ -20,8 +18,6 @@
 html,body{height:100%;font-family:'Noto Serif SC',Georgia,serif;background:var(--paper);color:var(--ink)}
 body{background-image:repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(184,134,11,.05) 28px)}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
-
-/* ===== LOGIN ===== */
 #login-screen{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#1a1208,#2d1f0a,#1a0f05)}
 .login-box{width:380px;padding:44px 40px;background:rgba(250,246,238,.97);border:1px solid var(--gold);position:relative}
 .login-box::before,.login-box::after{content:'';position:absolute;width:20px;height:20px;border-color:var(--gold2);border-style:solid}
@@ -40,12 +36,8 @@ body{background-image:repeating-linear-gradient(0deg,transparent,transparent 27p
 .login-hint{margin-top:18px;font-size:11px;color:var(--ink3);text-align:center;line-height:2}
 .login-hint code{background:var(--paper2);padding:1px 6px;border:1px solid var(--border)}
 .login-err{color:var(--red);font-size:12px;margin-top:8px;text-align:center;min-height:18px}
-
-/* ===== APP ===== */
 #app{display:none;min-height:100vh;flex-direction:column}
 #app.show{display:flex}
-
-/* HEADER */
 .hdr{background:linear-gradient(135deg,#1a1208,#2d1f0a);color:var(--gold2);padding:0 24px;height:54px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--gold);position:sticky;top:0;z-index:100;flex-shrink:0}
 .hdr-logo{display:flex;align-items:center;gap:14px}
 .hdr-logo h1{font-family:'ZCOOL XiaoWei',serif;font-size:19px;letter-spacing:.15em;color:var(--gold2)}
@@ -53,59 +45,37 @@ body{background-image:repeating-linear-gradient(0deg,transparent,transparent 27p
 .hdr-right{display:flex;align-items:center;gap:12px}
 .user-pill{font-size:12px;color:var(--gold-light);display:flex;align-items:center;gap:6px;padding:4px 10px;border:1px solid rgba(184,134,11,.3)}
 .rtag{font-size:10px;padding:1px 6px;font-weight:500}
-.rtag-super{background:#8b2020;color:#fdf0f0}
-.rtag-admin{background:#1a4a7a;color:#eef3f9}
-.rtag-staff{background:#2d6a4f;color:#eef7f2}
+.rtag-super{background:#8b2020;color:#fdf0f0}.rtag-admin{background:#1a4a7a;color:#eef3f9}.rtag-staff{background:#2d6a4f;color:#eef7f2}
 .btn-hdr{font-size:11px;color:var(--ink3);background:transparent;border:1px solid rgba(184,134,11,.2);padding:4px 10px;cursor:pointer;font-family:inherit;transition:all .2s;letter-spacing:.04em}
 .btn-hdr:hover{color:var(--gold2);border-color:var(--gold)}
-
-/* NAV */
 .nav{background:#1e140a;border-bottom:1px solid rgba(184,134,11,.25);padding:0 24px;display:flex;gap:0;overflow-x:auto;flex-shrink:0}
 .ni{padding:0 16px;height:42px;line-height:42px;font-size:13px;color:var(--ink3);cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all .18s;letter-spacing:.04em}
-.ni:hover{color:var(--gold2)}
-.ni.active{color:var(--gold2);border-bottom-color:var(--gold)}
+.ni:hover{color:var(--gold2)}.ni.active{color:var(--gold2);border-bottom-color:var(--gold)}
 .nbadge{display:inline-block;background:var(--red);color:#fff;font-size:10px;padding:0 5px;border-radius:8px;margin-left:4px;vertical-align:middle}
-
-/* CONTENT */
 .content{flex:1;padding:22px 24px;overflow-y:auto}
 .pg{display:none}.pg.active{display:block}
-
-/* PAGE HEADER */
 .ph{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
 .pt{font-family:'ZCOOL XiaoWei',serif;font-size:19px;letter-spacing:.1em}
 .pt::before{content:'';display:inline-block;width:3px;height:16px;background:var(--gold);margin-right:9px;vertical-align:middle}
-
-/* ALERT BAR */
 .abar{background:linear-gradient(90deg,#fdf0f0,#fff5f5);border:1px solid #e8c0c0;border-left:3px solid var(--red);padding:10px 14px;margin-bottom:18px;display:flex;align-items:flex-start;gap:9px}
-.abar-icon{font-size:15px}
-.abar-text{font-size:12px;color:var(--red);line-height:1.7;flex:1}
+.abar-icon{font-size:15px}.abar-text{font-size:12px;color:var(--red);line-height:1.7;flex:1}
 .abar-text strong{font-size:13px;display:block;margin-bottom:2px}
-
-/* SUMMARY CARDS */
 .srow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
 .sc{background:var(--white);border:1px solid var(--border);padding:14px 16px;position:relative;overflow:hidden}
 .sc::after{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--gold)}
 .sc.red::after{background:var(--red)}.sc.green::after{background:var(--green)}.sc.blue::after{background:var(--blue)}
 .sc-label{font-size:11px;color:var(--ink3);letter-spacing:.04em;margin-bottom:7px}
-.sc-value{font-size:24px;font-weight:300;color:var(--ink)}
-.sc.red .sc-value{color:var(--red)}
-
-/* CARD */
+.sc-value{font-size:24px;font-weight:300;color:var(--ink)}.sc.red .sc-value{color:var(--red)}
 .card{background:var(--white);border:1px solid var(--border);margin-bottom:16px}
 .card-hdr{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:linear-gradient(90deg,var(--gold-pale),var(--white))}
 .card-hdr-t{font-size:13px;font-weight:500;letter-spacing:.04em}
 .card-body{padding:16px}
-
-/* TABLE */
 .tw{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:13px}
 th{text-align:left;padding:9px 11px;background:linear-gradient(180deg,var(--gold-pale),var(--paper2));border-bottom:1px solid var(--border2);font-size:11px;font-weight:500;color:var(--ink3);letter-spacing:.07em;white-space:nowrap}
 td{padding:9px 11px;border-bottom:1px solid var(--border);color:var(--ink);vertical-align:middle}
-tr:last-child td{border-bottom:none}
-tr:hover td{background:var(--gold-pale)}
+tr:last-child td{border-bottom:none}tr:hover td{background:var(--gold-pale)}
 .qty{font-size:14px;font-weight:500}.qty-ok{color:var(--green)}.qty-low{color:var(--red);font-weight:700}.qty-zero{color:var(--red);font-weight:700}
-
-/* BADGES */
 .b{display:inline-block;padding:2px 7px;font-size:11px}
 .b-red{background:var(--red-bg);color:var(--red);border:1px solid #e0b0b0}
 .b-green{background:var(--green-bg);color:var(--green);border:1px solid #b0d8c0}
@@ -114,12 +84,10 @@ tr:hover td{background:var(--gold-pale)}
 .b-gray{background:var(--paper2);color:var(--ink3);border:1px solid var(--border)}
 .b-in{background:#eef3f9;color:#1a4a7a;border:1px solid #b0c8e0}
 .b-out{background:#fdf0f0;color:#8b2020;border:1px solid #e0b0b0}
-
-/* FORMS */
 .fg{display:flex;flex-direction:column;gap:5px}
 .fg label{font-size:11px;color:var(--ink3);letter-spacing:.05em}
 .fg label .req{color:var(--red)}
-.fg input,.fg select,.fg textarea,.fg datalist{width:100%;height:36px;padding:0 11px;border:1px solid var(--border);background:var(--paper);font-family:inherit;font-size:13px;color:var(--ink);outline:none;transition:border .2s}
+.fg input,.fg select,.fg textarea{width:100%;height:36px;padding:0 11px;border:1px solid var(--border);background:var(--paper);font-family:inherit;font-size:13px;color:var(--ink);outline:none;transition:border .2s}
 .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold2)}
 .fg input.err,.fg select.err{border-color:var(--red)}
 .fg textarea{height:auto;padding:9px 11px;resize:vertical}
@@ -127,8 +95,6 @@ tr:hover td{background:var(--gold-pale)}
 .fr1{grid-template-columns:1fr}.fr2{grid-template-columns:1fr 1fr}.fr3{grid-template-columns:1fr 1fr 1fr}
 .stock-box{padding:10px 13px;border:1px solid var(--border);font-size:13px;color:var(--ink3);margin-bottom:12px;display:none;background:var(--gold-pale)}
 .stock-box.low{background:var(--red-bg);border-color:#e0b0b0;color:var(--red)}
-
-/* BUTTONS */
 .btn{height:36px;padding:0 18px;border:1px solid var(--border2);background:var(--paper);font-family:inherit;font-size:13px;color:var(--ink);cursor:pointer;transition:all .15s;letter-spacing:.03em;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
 .btn:hover{background:var(--paper2);border-color:var(--gold)}
 .btn-p{background:var(--ink);color:var(--gold2);border-color:var(--ink)}.btn-p:hover{background:var(--ink2)}
@@ -139,24 +105,19 @@ tr:hover td{background:var(--gold-pale)}
 .frow{display:flex;gap:9px;margin-bottom:14px;flex-wrap:wrap;align-items:center}
 .frow select,.frow input{height:30px;padding:0 9px;border:1px solid var(--border);background:var(--paper);font-family:inherit;font-size:12px;color:var(--ink);outline:none}
 .frow input{width:190px}.frow select{width:130px}
-
-/* MODAL */
 .mover{position:fixed;inset:0;background:rgba(20,12,4,.72);display:none;align-items:center;justify-content:center;z-index:500}
 .mover.open{display:flex}
 .modal{background:var(--paper);border:1px solid var(--gold);width:500px;max-width:95vw;max-height:90vh;overflow-y:auto;position:relative}
 .modal::before,.modal::after{content:'';position:absolute;width:18px;height:18px;border-color:var(--gold2);border-style:solid}
 .modal::before{top:-1px;left:-1px;border-width:2px 0 0 2px}
 .modal::after{bottom:-1px;right:-1px;border-width:0 2px 2px 0}
-.modal.sm{width:400px}.modal.md{width:460px}
+.modal.sm{width:400px}
 .mhdr{padding:14px 18px;border-bottom:1px solid var(--border);background:linear-gradient(90deg,var(--gold-pale),var(--paper));display:flex;align-items:center;justify-content:space-between}
 .mtitle{font-family:'ZCOOL XiaoWei',serif;font-size:15px;letter-spacing:.1em}
 .mclose{background:none;border:none;color:var(--ink3);cursor:pointer;font-size:18px;line-height:1;padding:0}
-.mbody{padding:18px}
-.mfoot{padding:14px 18px;border-top:1px solid var(--border);display:flex;gap:9px;justify-content:flex-end}
+.mbody{padding:18px}.mfoot{padding:14px 18px;border-top:1px solid var(--border);display:flex;gap:9px;justify-content:flex-end}
 .sdiv{display:flex;align-items:center;gap:10px;margin:14px 0 10px;font-size:11px;color:var(--ink3);letter-spacing:.08em}
 .sdiv::before,.sdiv::after{content:'';flex:1;height:1px;background:var(--border)}
-
-/* PRODUCT GRID */
 .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
 .pc{background:var(--white);border:1px solid var(--border);padding:14px}
 .pc.off{opacity:.55}
@@ -165,39 +126,31 @@ tr:hover td{background:var(--gold-pale)}
 .sku-chip{font-size:11px;padding:2px 7px;border:1px solid var(--border);background:var(--paper2);color:var(--ink2)}
 .sku-chip.low{border-color:#e0b0b0;color:var(--red);background:var(--red-bg)}
 .pc-actions{display:flex;gap:6px;border-top:1px solid var(--border);padding-top:9px;margin-top:8px;flex-wrap:wrap}
-
-/* TOAST */
 .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);padding:10px 20px;font-size:13px;z-index:9999;display:none;border:1px solid;letter-spacing:.04em;font-family:inherit}
 .toast.show{display:block;animation:ti .25s ease}
 @keyframes ti{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 .t-ok{background:var(--green-bg);border-color:var(--green);color:var(--green)}
 .t-err{background:var(--red-bg);border-color:var(--red);color:var(--red)}
 .t-info{background:var(--gold-pale);border-color:var(--gold);color:var(--ink2)}
-
 .empty{text-align:center;padding:44px;color:var(--ink3);font-size:13px}
+/* OPERATOR MEMORY */
+.op-wrap{position:relative}
+.op-wrap input{width:100%}
+.op-saved-list{position:absolute;top:38px;left:0;right:0;background:var(--white);border:1px solid var(--border2);z-index:200;max-height:160px;overflow-y:auto;display:none;box-shadow:0 4px 12px var(--shadow)}
+.op-saved-list.open{display:block}
+.op-saved-item{padding:8px 12px;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.op-saved-item:last-child{border-bottom:none}
+.op-saved-item:hover{background:var(--gold-pale)}
+.op-saved-item .del{color:var(--red);font-size:11px;padding:2px 6px;cursor:pointer;border:none;background:none}
+
 .danger-box{background:var(--red-bg);border:1px solid #e0b0b0;padding:14px;margin-bottom:14px}
 .danger-box p{font-size:13px;color:var(--red);line-height:1.8}
-
-/* combo input (datalist) */
-.combo-wrap{position:relative}
-.combo-wrap input{width:100%}
-
-@media(max-width:768px){
-  .srow{grid-template-columns:1fr 1fr}
-  .fr3{grid-template-columns:1fr 1fr}
-  .content{padding:14px}
-  .hdr{padding:0 14px}
-  .nav{padding:0 14px}
-}
-@media(max-width:480px){
-  .srow{grid-template-columns:1fr}
-  .fr2,.fr3{grid-template-columns:1fr}
-}
+@media(max-width:768px){.srow{grid-template-columns:1fr 1fr}.fr3{grid-template-columns:1fr 1fr}.content{padding:14px}.hdr{padding:0 14px}.nav{padding:0 14px}}
+@media(max-width:480px){.srow{grid-template-columns:1fr}.fr2,.fr3{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<!-- ===== LOGIN ===== -->
 <div id="login-screen">
   <div class="login-box">
     <div class="login-logo">
@@ -209,30 +162,19 @@ tr:hover td{background:var(--gold-pale)}
     <div class="ff"><label>密码</label><input type="password" id="lp" placeholder="请输入密码" onkeydown="if(event.key==='Enter')doLogin()"></div>
     <button class="btn-login" onclick="doLogin()">进 入 系 统</button>
     <div class="login-err" id="login-err"></div>
-    <div class="login-hint">
-      初始账号（可由管理员修改）<br>
-      员工 <code>staff / 123</code> &nbsp; 管理员 <code>admin / admin</code> &nbsp; 超管 <code>super / super888</code>
-    </div>
+    <div class="login-hint">员工 <code>staff / 123</code> &nbsp; 管理员 <code>admin / admin</code> &nbsp; 超管 <code>super / super888</code></div>
   </div>
 </div>
 
-<!-- ===== APP ===== -->
 <div id="app">
   <div class="hdr">
-    <div class="hdr-logo">
-      <h1>云锦长安</h1>
-      <div class="hdr-sub">耗材库存管理</div>
-    </div>
+    <div class="hdr-logo"><h1>云锦长安</h1><div class="hdr-sub">耗材库存管理</div></div>
     <div class="hdr-right">
-      <div class="user-pill">
-        <span id="h-user">—</span>
-        <span class="rtag" id="h-rtag"></span>
-      </div>
+      <div class="user-pill"><span id="h-user">—</span><span class="rtag" id="h-rtag"></span></div>
       <button class="btn-hdr" onclick="showPg('profile')">账户设置</button>
       <button class="btn-hdr" onclick="doLogout()">退出</button>
     </div>
   </div>
-
   <div class="nav" id="main-nav">
     <div class="ni active" data-pg="overview" onclick="showPg('overview')">库存总览</div>
     <div class="ni" data-pg="inbound" onclick="showPg('inbound')">入库操作</div>
@@ -244,65 +186,42 @@ tr:hover td{background:var(--gold-pale)}
     <div class="ni" data-pg="data" onclick="showPg('data')">导入导出</div>
     <div class="ni" data-pg="danger" id="nav-danger" style="display:none" onclick="showPg('danger')">危险操作</div>
   </div>
-
   <div class="content">
 
-    <!-- 库存总览 -->
     <div id="pg-overview" class="pg active">
       <div class="ph">
         <div class="pt">库存总览</div>
         <div style="display:flex;gap:8px">
           <select id="ov-cat" onchange="renderOv()" style="height:30px;padding:0 9px;border:1px solid var(--border);background:var(--paper);font-family:inherit;font-size:12px;outline:none"><option value="">全部分类</option></select>
-          <select id="ov-st" onchange="renderOv()" style="height:30px;padding:0 9px;border:1px solid var(--border);background:var(--paper);font-family:inherit;font-size:12px;outline:none">
-            <option value="">全部状态</option><option value="low">仅看预警</option><option value="ok">库存充足</option>
-          </select>
+          <select id="ov-st" onchange="renderOv()" style="height:30px;padding:0 9px;border:1px solid var(--border);background:var(--paper);font-family:inherit;font-size:12px;outline:none"><option value="">全部状态</option><option value="low">仅看预警</option><option value="ok">库存充足</option></select>
         </div>
       </div>
-      <div id="ov-alert" class="abar" style="display:none">
-        <div class="abar-icon">⚑</div>
-        <div class="abar-text"><strong>补货提醒</strong><span id="ov-alert-txt"></span></div>
-      </div>
+      <div id="ov-alert" class="abar" style="display:none"><div class="abar-icon">⚑</div><div class="abar-text"><strong>补货提醒</strong><span id="ov-alert-txt"></span></div></div>
       <div class="srow" id="ov-cards"></div>
-      <div class="card">
-        <div class="card-hdr"><span class="card-hdr-t">耗材库存明细</span></div>
-        <div class="tw">
-          <table><thead><tr><th>商品名称</th><th>分类</th><th>规格属性</th><th>当前库存</th><th>预警值</th><th>状态</th><th id="adj-col" style="display:none">调整</th></tr></thead>
-          <tbody id="ov-tbody"></tbody></table>
-        </div>
+      <div class="card"><div class="card-hdr"><span class="card-hdr-t">耗材库存明细</span></div>
+        <div class="tw"><table><thead><tr><th>商品名称</th><th>分类</th><th>规格 / 属性</th><th>当前库存</th><th>预警值</th><th>状态</th><th id="adj-col" style="display:none">调整</th></tr></thead><tbody id="ov-tbody"></tbody></table></div>
       </div>
     </div>
 
-    <!-- 入库 -->
     <div id="pg-inbound" class="pg">
       <div class="ph"><div class="pt">入库操作</div></div>
-      <div class="card">
-        <div class="card-hdr"><span class="card-hdr-t">填写入库信息</span></div>
+      <div class="card"><div class="card-hdr"><span class="card-hdr-t">填写入库信息</span></div>
         <div class="card-body">
           <div class="fr fr2">
-            <div class="fg"><label>商品分类</label>
-              <select id="in-cat" onchange="onCatChange('in')"><option value="">— 请选择分类 —</option></select>
-            </div>
+            <div class="fg"><label>商品分类</label><select id="in-cat" onchange="onCatChange('in')"><option value="">— 请选择分类 —</option></select></div>
             <div class="fg"><label>商品名称 <span class="req">*</span>（可直接输入新商品）</label>
-              <div class="combo-wrap">
-                <input id="in-name" list="in-name-list" placeholder="选择或输入商品名称" oninput="onNameInput('in')" autocomplete="off">
-                <datalist id="in-name-list"></datalist>
-              </div>
+              <input id="in-name" list="in-name-dl" placeholder="选择或直接输入商品名称" oninput="onNameInput('in')" autocomplete="off">
+              <datalist id="in-name-dl"></datalist>
             </div>
           </div>
           <div class="fr fr2" id="in-attr-row" style="display:none">
-            <div class="fg" id="in-a1g" style="display:none">
-              <label id="in-a1l">属性1 <span class="req">*</span></label>
-              <div class="combo-wrap">
-                <input id="in-a1" list="in-a1-list" placeholder="选择或输入规格" oninput="onAttrInput('in')" autocomplete="off">
-                <datalist id="in-a1-list"></datalist>
-              </div>
+            <div class="fg" id="in-a1g" style="display:none"><label id="in-a1l">属性 <span class="req">*</span></label>
+              <input id="in-a1" list="in-a1-dl" placeholder="选择或输入规格" oninput="onAttrInput('in')" autocomplete="off">
+              <datalist id="in-a1-dl"></datalist>
             </div>
-            <div class="fg" id="in-a2g" style="display:none">
-              <label id="in-a2l">属性2</label>
-              <div class="combo-wrap">
-                <input id="in-a2" list="in-a2-list" placeholder="选择或输入" oninput="onAttrInput('in')" autocomplete="off">
-                <datalist id="in-a2-list"></datalist>
-              </div>
+            <div class="fg" id="in-a2g" style="display:none"><label id="in-a2l">属性2</label>
+              <input id="in-a2" list="in-a2-dl" placeholder="选择或输入" oninput="onAttrInput('in')" autocomplete="off">
+              <datalist id="in-a2-dl"></datalist>
             </div>
           </div>
           <div id="in-stock-box" class="stock-box"></div>
@@ -312,104 +231,74 @@ tr:hover td{background:var(--gold-pale)}
             <div class="fg"><label>供应商</label><input type="text" id="in-sup" placeholder="可选"></div>
           </div>
           <div class="fr fr2">
-            <div class="fg"><label>操作人员 <span class="req">*</span></label><input type="text" id="in-op" placeholder="必填，请填写姓名"></div>
+            <div class="fg"><label>操作人员 <span class="req">*</span></label>
+              <div class="op-wrap">
+                <input type="text" id="in-op" placeholder="必填，点击选择或输入姓名" autocomplete="off" onfocus="showOpList('in-op')" oninput="filterOpList('in-op')">
+                <div class="op-saved-list" id="in-op-list"></div>
+              </div>
+            </div>
             <div class="fg"><label>备注</label><input type="text" id="in-note" placeholder="可选"></div>
           </div>
-          <div class="btn-row">
-            <button class="btn" onclick="resetForm('in')">重 置</button>
-            <button class="btn btn-p" onclick="doInbound()">确认入库 ↓</button>
-          </div>
+          <div class="btn-row"><button class="btn" onclick="resetForm('in')">重 置</button><button class="btn btn-p" onclick="doInbound()">确认入库 ↓</button></div>
         </div>
       </div>
     </div>
 
-    <!-- 出库 -->
     <div id="pg-outbound" class="pg">
       <div class="ph"><div class="pt">出库操作</div></div>
-      <div class="card">
-        <div class="card-hdr"><span class="card-hdr-t">填写出库信息</span></div>
+      <div class="card"><div class="card-hdr"><span class="card-hdr-t">填写出库信息</span></div>
         <div class="card-body">
           <div class="fr fr2">
-            <div class="fg"><label>商品分类</label>
-              <select id="out-cat" onchange="onCatChange('out')"><option value="">— 请选择分类 —</option></select>
-            </div>
+            <div class="fg"><label>商品分类</label><select id="out-cat" onchange="onCatChange('out')"><option value="">— 请选择分类 —</option></select></div>
             <div class="fg"><label>商品名称 <span class="req">*</span></label>
-              <div class="combo-wrap">
-                <input id="out-name" list="out-name-list" placeholder="选择或输入商品名称" oninput="onNameInput('out')" autocomplete="off">
-                <datalist id="out-name-list"></datalist>
-              </div>
+              <input id="out-name" list="out-name-dl" placeholder="选择或输入商品名称" oninput="onNameInput('out')" autocomplete="off">
+              <datalist id="out-name-dl"></datalist>
             </div>
           </div>
           <div class="fr fr2" id="out-attr-row" style="display:none">
-            <div class="fg" id="out-a1g" style="display:none">
-              <label id="out-a1l">属性1 <span class="req">*</span></label>
-              <div class="combo-wrap">
-                <input id="out-a1" list="out-a1-list" placeholder="选择或输入规格" oninput="onAttrInput('out')" autocomplete="off">
-                <datalist id="out-a1-list"></datalist>
-              </div>
+            <div class="fg" id="out-a1g" style="display:none"><label id="out-a1l">属性 <span class="req">*</span></label>
+              <input id="out-a1" list="out-a1-dl" placeholder="选择或输入规格" oninput="onAttrInput('out')" autocomplete="off">
+              <datalist id="out-a1-dl"></datalist>
             </div>
-            <div class="fg" id="out-a2g" style="display:none">
-              <label id="out-a2l">属性2</label>
-              <div class="combo-wrap">
-                <input id="out-a2" list="out-a2-list" placeholder="选择或输入" oninput="onAttrInput('out')" autocomplete="off">
-                <datalist id="out-a2-list"></datalist>
-              </div>
+            <div class="fg" id="out-a2g" style="display:none"><label id="out-a2l">属性2</label>
+              <input id="out-a2" list="out-a2-dl" placeholder="选择或输入" oninput="onAttrInput('out')" autocomplete="off">
+              <datalist id="out-a2-dl"></datalist>
             </div>
           </div>
           <div id="out-stock-box" class="stock-box"></div>
           <div class="fr fr2">
             <div class="fg"><label>出库数量 <span class="req">*</span></label><input type="number" id="out-qty" min="1" value="1"></div>
             <div class="fg"><label>出库类型 <span class="req">*</span></label>
-              <select id="out-type">
-                <option value="use">正常化妆使用</option>
-                <option value="loss">破损 / 报废</option>
-                <option value="sample">样品试用</option>
-                <option value="gift">赠品外带</option>
-              </select>
+              <select id="out-type"><option value="use">正常化妆使用</option><option value="loss">破损 / 报废</option><option value="sample">样品试用</option><option value="gift">赠品外带</option></select>
             </div>
           </div>
           <div class="fr fr2">
-            <div class="fg"><label>操作人员 <span class="req">*</span></label><input type="text" id="out-op" placeholder="必填，请填写姓名"></div>
+            <div class="fg"><label>操作人员 <span class="req">*</span></label>
+              <div class="op-wrap">
+                <input type="text" id="out-op" placeholder="必填，点击选择或输入姓名" autocomplete="off" onfocus="showOpList('out-op')" oninput="filterOpList('out-op')">
+                <div class="op-saved-list" id="out-op-list"></div>
+              </div>
+            </div>
             <div class="fg"><label>备注</label><input type="text" id="out-note" placeholder="可选"></div>
           </div>
-          <div class="btn-row">
-            <button class="btn" onclick="resetForm('out')">重 置</button>
-            <button class="btn btn-d" onclick="doOutbound()">确认出库 ↑</button>
-          </div>
+          <div class="btn-row"><button class="btn" onclick="resetForm('out')">重 置</button><button class="btn btn-d" onclick="doOutbound()">确认出库 ↑</button></div>
         </div>
       </div>
     </div>
 
-    <!-- 补货预警 -->
-    <div id="pg-warning" class="pg">
-      <div class="ph"><div class="pt">补货预警清单</div></div>
-      <div id="warn-content"></div>
-    </div>
+    <div id="pg-warning" class="pg"><div class="ph"><div class="pt">补货预警清单</div></div><div id="warn-content"></div></div>
 
-    <!-- 台账 -->
     <div id="pg-records" class="pg">
-      <div class="ph">
-        <div class="pt">操作台账</div>
-        <button class="btn btn-sm" onclick="exportRecords()">导出 CSV</button>
-      </div>
+      <div class="ph"><div class="pt">操作台账</div><button class="btn btn-sm" onclick="exportRecords()">导出 CSV</button></div>
       <div class="frow">
         <select id="rec-tf" onchange="renderRec()"><option value="">全部类型</option><option value="in">入库</option><option value="out">出库</option><option value="adjust">盘点调整</option></select>
         <input id="rec-sq" placeholder="搜索商品名称…" oninput="renderRec()">
       </div>
-      <div class="card">
-        <div class="tw">
-          <table><thead><tr><th>时间</th><th>类型</th><th>商品</th><th>规格</th><th>变动</th><th>原库存</th><th>现库存</th><th>操作人</th><th>备注</th></tr></thead>
-          <tbody id="rec-tbody"></tbody></table>
-        </div>
-      </div>
+      <div class="card"><div class="tw"><table><thead><tr><th>时间</th><th>类型</th><th>商品</th><th>规格</th><th>变动</th><th>原库存</th><th>现库存</th><th>操作人</th><th>备注</th></tr></thead><tbody id="rec-tbody"></tbody></table></div></div>
     </div>
 
-    <!-- 商品管理 -->
     <div id="pg-products" class="pg">
-      <div class="ph">
-        <div class="pt">商品管理</div>
-        <button class="btn btn-p" onclick="openAddProd()">+ 新增商品</button>
-      </div>
+      <div class="ph"><div class="pt">商品管理</div><button class="btn btn-p" onclick="openAddProd()">+ 新增商品</button></div>
       <div class="frow">
         <select id="prod-cat-f" onchange="renderProds()"><option value="">全部分类</option></select>
         <select id="prod-st-f" onchange="renderProds()"><option value="active">启用中</option><option value="all">全部</option><option value="off">已停用</option></select>
@@ -417,45 +306,26 @@ tr:hover td{background:var(--gold-pale)}
       <div id="prods-wrap"></div>
     </div>
 
-    <!-- 账号管理 -->
     <div id="pg-accounts" class="pg">
-      <div class="ph">
-        <div class="pt">账号管理</div>
-        <button class="btn btn-p" onclick="openAddAcc()">+ 新建账号</button>
-      </div>
-      <div class="card">
-        <div class="tw">
-          <table><thead><tr><th>账号</th><th>姓名</th><th>角色</th><th>状态</th><th>操作</th></tr></thead>
-          <tbody id="acc-tbody"></tbody></table>
-        </div>
-      </div>
+      <div class="ph"><div class="pt">账号管理</div><button class="btn btn-p" onclick="openAddAcc()">+ 新建账号</button></div>
+      <div class="card"><div class="tw"><table><thead><tr><th>账号</th><th>姓名</th><th>角色</th><th>状态</th><th>操作</th></tr></thead><tbody id="acc-tbody"></tbody></table></div></div>
     </div>
 
-    <!-- 账户设置（个人） -->
     <div id="pg-profile" class="pg">
       <div class="ph"><div class="pt">账户设置</div></div>
-      <div class="card" style="max-width:420px">
-        <div class="card-hdr"><span class="card-hdr-t">修改登录密码</span></div>
+      <div class="card" style="max-width:420px"><div class="card-hdr"><span class="card-hdr-t">修改登录密码</span></div>
         <div class="card-body">
-          <div class="fr fr1">
-            <div class="fg"><label>当前密码 <span class="req">*</span></label><input type="password" id="pw-old" placeholder="请输入当前密码"></div>
-          </div>
-          <div class="fr fr1">
-            <div class="fg"><label>新密码 <span class="req">*</span></label><input type="password" id="pw-new" placeholder="至少4位"></div>
-          </div>
-          <div class="fr fr1">
-            <div class="fg"><label>确认新密码 <span class="req">*</span></label><input type="password" id="pw-new2" placeholder="再次输入新密码"></div>
-          </div>
+          <div class="fr fr1"><div class="fg"><label>当前密码 <span class="req">*</span></label><input type="password" id="pw-old" placeholder="请输入当前密码"></div></div>
+          <div class="fr fr1"><div class="fg"><label>新密码 <span class="req">*</span></label><input type="password" id="pw-new" placeholder="至少4位"></div></div>
+          <div class="fr fr1"><div class="fg"><label>确认新密码 <span class="req">*</span></label><input type="password" id="pw-new2" placeholder="再次输入新密码"></div></div>
           <div class="btn-row"><button class="btn btn-p" onclick="doChangePw()">保存密码</button></div>
         </div>
       </div>
     </div>
 
-    <!-- 导入导出 -->
     <div id="pg-data" class="pg">
       <div class="ph"><div class="pt">数据导入 / 导出</div></div>
-      <div class="card" style="margin-bottom:14px">
-        <div class="card-hdr"><span class="card-hdr-t">导出数据</span></div>
+      <div class="card" style="margin-bottom:14px"><div class="card-hdr"><span class="card-hdr-t">导出数据</span></div>
         <div class="card-body">
           <p style="font-size:13px;color:var(--ink3);margin-bottom:14px">将数据导出为 CSV / JSON 文件，可用 Excel 或 WPS 打开 CSV。</p>
           <div style="display:flex;gap:10px;flex-wrap:wrap">
@@ -465,47 +335,29 @@ tr:hover td{background:var(--gold-pale)}
           </div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-hdr"><span class="card-hdr-t">导入数据</span></div>
+      <div class="card"><div class="card-hdr"><span class="card-hdr-t">导入数据</span></div>
         <div class="card-body">
           <p style="font-size:13px;color:var(--ink3);margin-bottom:4px">CSV 列顺序：商品名称, 分类, 属性1名称, 属性1值, 属性2名称, 属性2值, 当前库存, 预警值</p>
-          <p style="font-size:12px;color:var(--ink3);margin-bottom:14px">（第一行为表头，从第二行开始为数据）</p>
-          <div style="margin-bottom:12px">
-            <label style="font-size:12px;color:var(--ink3);display:block;margin-bottom:6px">导入 CSV（批量新增或更新库存）</label>
-            <input type="file" id="imp-csv" accept=".csv" onchange="importCSV()">
-          </div>
-          <div>
-            <label style="font-size:12px;color:var(--ink3);display:block;margin-bottom:6px">导入 JSON 备份（全量恢复）</label>
-            <input type="file" id="imp-json" accept=".json" onchange="importJSON()">
-          </div>
+          <div style="margin-bottom:12px"><label style="font-size:12px;color:var(--ink3);display:block;margin-bottom:6px">导入 CSV</label><input type="file" id="imp-csv" accept=".csv" onchange="importCSV()"></div>
+          <div><label style="font-size:12px;color:var(--ink3);display:block;margin-bottom:6px">导入 JSON 备份（全量恢复）</label><input type="file" id="imp-json" accept=".json" onchange="importJSON()"></div>
           <div id="imp-res" style="margin-top:10px;font-size:12px;display:none"></div>
         </div>
       </div>
     </div>
 
-    <!-- 危险操作 -->
     <div id="pg-danger" class="pg">
       <div class="ph"><div class="pt" style="color:var(--red)">危险操作（超管专用）</div></div>
-      <div class="card">
-        <div class="card-hdr" style="background:linear-gradient(90deg,var(--red-bg),var(--paper))"><span class="card-hdr-t" style="color:var(--red)">一键清空所有库存数据</span></div>
+      <div class="card"><div class="card-hdr" style="background:linear-gradient(90deg,var(--red-bg),var(--paper))"><span class="card-hdr-t" style="color:var(--red)">一键清空所有库存数据</span></div>
         <div class="card-body">
-          <div class="danger-box">
-            <p>此操作将清空系统内全部商品、库存及台账记录，不可撤销。</p>
-            <p>账号数据保留，不受影响。</p>
-          </div>
-          <div class="fg" style="max-width:280px;margin-bottom:14px">
-            <label>输入超管密码确认 <span class="req">*</span></label>
-            <input type="password" id="cl-pw" placeholder="超管密码">
-          </div>
+          <div class="danger-box"><p>此操作将清空全部商品、库存及台账记录，不可撤销。账号数据保留。</p></div>
+          <div class="fg" style="max-width:280px;margin-bottom:14px"><label>输入超管密码确认 <span class="req">*</span></label><input type="password" id="cl-pw" placeholder="超管密码"></div>
           <button class="btn btn-d" onclick="doClearAll()">确认清空全部数据</button>
         </div>
       </div>
     </div>
 
-  </div><!-- /content -->
-</div><!-- /app -->
-
-<!-- ===== MODALS ===== -->
+  </div>
+</div>
 
 <!-- 盘点调整 -->
 <div class="mover" id="m-adjust">
@@ -514,13 +366,15 @@ tr:hover td{background:var(--gold-pale)}
     <div class="mbody">
       <div id="adj-info" style="font-size:13px;color:var(--ink3);padding:10px;background:var(--gold-pale);border:1px solid var(--border);margin-bottom:14px"></div>
       <div class="fr fr1"><div class="fg"><label>调整后库存数量 <span class="req">*</span></label><input type="number" id="adj-qty" min="0"></div></div>
-      <div class="fr fr1"><div class="fg"><label>操作人员 <span class="req">*</span></label><input id="adj-op" placeholder="必填"></div></div>
+      <div class="fr fr1"><div class="fg"><label>操作人员 <span class="req">*</span></label>
+        <div class="op-wrap">
+          <input id="adj-op" placeholder="必填，点击选择或输入姓名" autocomplete="off" onfocus="showOpList('adj-op')" oninput="filterOpList('adj-op')">
+          <div class="op-saved-list" id="adj-op-list"></div>
+        </div>
+      </div></div>
       <div class="fr fr1"><div class="fg"><label>调整原因</label><input id="adj-note" placeholder="如：盘点发现数量不符"></div></div>
     </div>
-    <div class="mfoot">
-      <button class="btn" onclick="closeMod('m-adjust')">取消</button>
-      <button class="btn btn-p" onclick="saveAdj()">确认调整</button>
-    </div>
+    <div class="mfoot"><button class="btn" onclick="closeMod('m-adjust')">取消</button><button class="btn btn-p" onclick="saveAdj()">确认调整</button></div>
   </div>
 </div>
 
@@ -532,7 +386,7 @@ tr:hover td{background:var(--gold-pale)}
       <div class="fr fr2">
         <div class="fg"><label>商品名称 <span class="req">*</span></label><input id="mp-name" placeholder="如：分段仙子睫毛"></div>
         <div class="fg"><label>分类 <span class="req">*</span></label>
-          <select id="mp-cat"><option>底妆类</option><option>眼妆类</option><option>彩妆类</option><option>清洁类</option><option>造型类</option></select>
+          <select id="mp-cat"><option>化妆品</option><option>眼妆 / 睫毛</option><option>造型物</option><option>工具</option><option>特殊化妆品</option></select>
         </div>
       </div>
       <div class="fr fr2">
@@ -552,10 +406,7 @@ tr:hover td{background:var(--gold-pale)}
         </div>
       </div>
     </div>
-    <div class="mfoot">
-      <button class="btn" onclick="closeMod('m-prod')">取消</button>
-      <button class="btn btn-p" onclick="saveProd()">保存</button>
-    </div>
+    <div class="mfoot"><button class="btn" onclick="closeMod('m-prod')">取消</button><button class="btn btn-p" onclick="saveProd()">保存</button></div>
   </div>
 </div>
 
@@ -573,33 +424,25 @@ tr:hover td{background:var(--gold-pale)}
       </div>
       <div class="fr fr1"><div class="fg"><label>操作人员 <span class="req">*</span></label><input id="sk-op" placeholder="必填"></div></div>
     </div>
-    <div class="mfoot">
-      <button class="btn" onclick="closeMod('m-sku')">取消</button>
-      <button class="btn btn-p" onclick="saveSku()">保存规格</button>
-    </div>
+    <div class="mfoot"><button class="btn" onclick="closeMod('m-sku')">取消</button><button class="btn btn-p" onclick="saveSku()">保存规格</button></div>
   </div>
 </div>
 
-<!-- 新增/编辑账号 -->
+<!-- 账号管理 -->
 <div class="mover" id="m-acc">
   <div class="modal sm">
     <div class="mhdr"><span class="mtitle" id="m-acc-title">新建账号</span><button class="mclose" onclick="closeMod('m-acc')">×</button></div>
     <div class="mbody">
-      <div class="fr fr1"><div class="fg"><label>账号（登录用） <span class="req">*</span></label><input id="acc-id" placeholder="英文+数字，不可重复"></div></div>
+      <div class="fr fr1"><div class="fg"><label>账号 <span class="req">*</span></label><input id="acc-id" placeholder="英文+数字，登录用"></div></div>
       <div class="fr fr1"><div class="fg"><label>姓名 <span class="req">*</span></label><input id="acc-name" placeholder="真实姓名"></div></div>
-      <div class="fr fr1"><div class="fg"><label>角色 <span class="req">*</span></label>
-        <select id="acc-role"><option value="staff">普通员工</option><option value="admin">管理员</option></select>
-      </div></div>
-      <div class="fr fr1" id="acc-pw-row"><div class="fg"><label>初始密码 <span class="req">*</span></label><input type="password" id="acc-pw" placeholder="至少4位"></div></div>
+      <div class="fr fr1"><div class="fg"><label>角色 <span class="req">*</span></label><select id="acc-role"><option value="staff">普通员工</option><option value="admin">管理员</option></select></div></div>
+      <div class="fr fr1"><div class="fg"><label>初始密码 <span class="req">*</span></label><input type="password" id="acc-pw" placeholder="至少4位"></div></div>
     </div>
-    <div class="mfoot">
-      <button class="btn" onclick="closeMod('m-acc')">取消</button>
-      <button class="btn btn-p" onclick="saveAcc()">保存账号</button>
-    </div>
+    <div class="mfoot"><button class="btn" onclick="closeMod('m-acc')">取消</button><button class="btn btn-p" onclick="saveAcc()">保存账号</button></div>
   </div>
 </div>
 
-<!-- 管理员重置密码 -->
+<!-- 重置密码 -->
 <div class="mover" id="m-resetpw">
   <div class="modal sm">
     <div class="mhdr"><span class="mtitle">重置密码</span><button class="mclose" onclick="closeMod('m-resetpw')">×</button></div>
@@ -608,10 +451,7 @@ tr:hover td{background:var(--gold-pale)}
       <div class="fr fr1"><div class="fg"><label>新密码 <span class="req">*</span></label><input type="password" id="rpw-new" placeholder="至少4位"></div></div>
       <div class="fr fr1"><div class="fg"><label>确认新密码 <span class="req">*</span></label><input type="password" id="rpw-new2" placeholder="再次输入"></div></div>
     </div>
-    <div class="mfoot">
-      <button class="btn" onclick="closeMod('m-resetpw')">取消</button>
-      <button class="btn btn-p" onclick="doResetPw()">确认重置</button>
-    </div>
+    <div class="mfoot"><button class="btn" onclick="closeMod('m-resetpw')">取消</button><button class="btn btn-p" onclick="doResetPw()">确认重置</button></div>
   </div>
 </div>
 
@@ -623,866 +463,492 @@ tr:hover td{background:var(--gold-pale)}
       <p id="dis-txt" style="font-size:13px;margin-bottom:14px;color:var(--ink)"></p>
       <div class="fr fr1"><div class="fg"><label>操作人员 <span class="req">*</span></label><input id="dis-op" placeholder="必填"></div></div>
     </div>
-    <div class="mfoot">
-      <button class="btn" onclick="closeMod('m-dis')">取消</button>
-      <button class="btn btn-d" onclick="confirmDis()">确认停用</button>
-    </div>
+    <div class="mfoot"><button class="btn" onclick="closeMod('m-dis')">取消</button><button class="btn btn-d" onclick="confirmDis()">确认停用</button></div>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-// ===================== STORAGE ENGINE =====================
-// 每次操作后立即写入，并做读取校验，防止数据丢失
-const STORE_KEY = 'yjca_v2';
-
-function loadDB() {
-  try {
-    const raw = localStorage.getItem(STORE_KEY);
-    if (!raw) return null;
-    const data = JSON.parse(raw);
-    // 基本结构校验
-    if (!data.products || !data.skus || !data.records || !data.accounts) return null;
-    return data;
-  } catch(e) { console.error('loadDB error', e); return null; }
+// ===== STORAGE =====
+const STORE_KEY = 'yjca_v3';
+function loadDB(){
+  try{const r=localStorage.getItem(STORE_KEY);if(!r)return null;const d=JSON.parse(r);if(!d.products||!d.skus||!d.records||!d.accounts)return null;return d;}
+  catch(e){return null;}
+}
+function saveDB(){
+  try{
+    const s=JSON.stringify(DB);
+    localStorage.setItem(STORE_KEY,s);
+    if(localStorage.getItem(STORE_KEY)!==s)toast('数据写入校验异常，请检查浏览器存储','err');
+  }catch(e){toast('保存失败：'+e.message,'err');}
 }
 
-function saveDB() {
-  try {
-    const serialized = JSON.stringify(DB);
-    localStorage.setItem(STORE_KEY, serialized);
-    // 读回验证
-    const verify = localStorage.getItem(STORE_KEY);
-    if (verify !== serialized) {
-      console.error('Storage verification failed!');
-      toast('数据写入校验失败，请检查浏览器存储空间', 'err');
-    }
-  } catch(e) {
-    console.error('saveDB error', e);
-    toast('数据保存失败：' + e.message, 'err');
-  }
-}
-
-// ===================== DEFAULT DATA =====================
-function buildDefaultDB() {
-  const prods = [
-    {n:'粉底液',c:'底妆类',a1n:'色号',a2n:''},
-    {n:'粉膏',c:'底妆类',a1n:'色号',a2n:''},
-    {n:'隔离',c:'底妆类',a1n:'色号',a2n:''},
-    {n:'遮瑕',c:'底妆类',a1n:'色号',a2n:''},
-    {n:'散粉',c:'底妆类',a1n:'规格',a2n:''},
-    {n:'定妆喷雾',c:'底妆类',a1n:'容量',a2n:''},
-    {n:'粉扑',c:'底妆类',a1n:'规格',a2n:''},
-    {n:'美妆蛋',c:'底妆类',a1n:'颜色',a2n:''},
-    {n:'分段仙子睫毛',c:'眼妆类',a1n:'款式',a2n:'长度'},
-    {n:'无痕假睫毛',c:'眼妆类',a1n:'款式',a2n:''},
-    {n:'睫毛胶',c:'眼妆类',a1n:'规格',a2n:''},
-    {n:'双眼皮贴',c:'眼妆类',a1n:'类型',a2n:''},
-    {n:'眉笔',c:'眼妆类',a1n:'色号',a2n:''},
-    {n:'眼影',c:'眼妆类',a1n:'系列',a2n:''},
-    {n:'腮红',c:'彩妆类',a1n:'色号',a2n:''},
-    {n:'修容',c:'彩妆类',a1n:'色号',a2n:''},
-    {n:'高光',c:'彩妆类',a1n:'色号',a2n:''},
-    {n:'口红',c:'彩妆类',a1n:'色号',a2n:''},
-    {n:'唇釉',c:'彩妆类',a1n:'色号',a2n:''},
-    {n:'卸妆水',c:'清洁类',a1n:'容量',a2n:''},
-    {n:'卸妆油',c:'清洁类',a1n:'容量',a2n:''},
-    {n:'卸妆棉',c:'清洁类',a1n:'规格',a2n:''},
-    {n:'棉签',c:'清洁类',a1n:'类型',a2n:''},
-    {n:'洗脸巾',c:'清洁类',a1n:'规格',a2n:''},
-    {n:'定型发胶',c:'造型类',a1n:'容量',a2n:''},
-    {n:'一次性辅助耗材',c:'造型类',a1n:'类型',a2n:''},
+// ===== REAL INVENTORY DATA =====
+function buildRealDB(){
+  // 分类：化妆品 / 眼妆·睫毛 / 造型物 / 工具 / 特殊化妆品
+  const items=[
+    // 化妆品
+    {n:'粉底',c:'化妆品',a1n:'色号',a2n:'',skus:[{a1:'110',a2:'',q:11,t:3},{a1:'120',a2:'',q:14,t:3},{a1:'130',a2:'',q:3,t:3},{a1:'#151',a2:'',q:2,t:3},{a1:'#152',a2:'',q:2,t:3}]},
+    {n:'nono粉底液',c:'化妆品',a1n:'规格',a2n:'',skus:[{a1:'标准装',a2:'',q:5,t:3}]},
+    {n:'肌零纱按压粉底',c:'化妆品',a1n:'规格',a2n:'',skus:[{a1:'标准装',a2:'',q:4,t:3}]},
+    {n:'散粉',c:'化妆品',a1n:'色号',a2n:'',skus:[{a1:'#003',a2:'',q:7,t:3}]},
+    {n:'卧蚕笔',c:'化妆品',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:11,t:3}]},
+    {n:'眼线笔',c:'化妆品',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:20,t:5}]},
+    {n:'染眉膏',c:'化妆品',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:4,t:3}]},
+    {n:'3色修容',c:'化妆品',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:3,t:3}]},
+    {n:'遮瑕',c:'化妆品',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:2,t:3}]},
+    {n:'渐变腮红',c:'化妆品',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:3,t:3}]},
+    {n:'3色腮红',c:'化妆品',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:1,t:3}]},
+    {n:'纯彩亮油',c:'化妆品',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:8,t:3}]},
+    {n:'亮亮液体眼影',c:'化妆品',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:26,t:5}]},
+    {n:'唇釉',c:'化妆品',a1n:'色号',a2n:'',skus:[{a1:'转运豆沙',a2:'',q:10,t:3},{a1:'棕红',a2:'',q:4,t:3},{a1:'茶红',a2:'',q:13,t:3},{a1:'法式裸茶',a2:'',q:1,t:3}]},
+    {n:'定妆喷雾',c:'化妆品',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:7,t:3}]},
+    {n:'补水喷雾',c:'化妆品',a1n:'规格',a2n:'',skus:[{a1:'标准（已补）',a2:'',q:1,t:3}]},
+    {n:'隔离',c:'化妆品',a1n:'色号',a2n:'',skus:[{a1:'绿色',a2:'',q:10,t:3},{a1:'紫色',a2:'',q:13,t:3}]},
+    {n:'小甘油',c:'化妆品',a1n:'规格',a2n:'',skus:[{a1:'小瓶',a2:'',q:7,t:3}]},
+    {n:'大甘油',c:'化妆品',a1n:'规格',a2n:'',skus:[{a1:'大瓶',a2:'',q:3,t:3}]},
+    {n:'素颜霜',c:'化妆品',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:4,t:3}]},
+    {n:'保湿霜',c:'化妆品',a1n:'规格',a2n:'',skus:[{a1:'标准瓶',a2:'',q:2,t:3}]},
+    {n:'大瓶卸妆油',c:'化妆品',a1n:'规格',a2n:'',skus:[{a1:'大瓶',a2:'',q:2,t:3}]},
+    {n:'卸妆水',c:'化妆品',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:1,t:3}]},
+    // 眼妆·睫毛
+    {n:'蕾丝双眼皮贴',c:'眼妆·睫毛',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:15,t:5}]},
+    {n:'睫毛胶水',c:'眼妆·睫毛',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:6,t:3}]},
+    {n:'3M胶',c:'眼妆·睫毛',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:7,t:3}]},
+    {n:'眉笔',c:'眼妆·睫毛',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:20,t:5}]},
+    {n:'216睫毛',c:'眼妆·睫毛',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:14,t:5}]},
+    {n:'白色硬梗睫毛',c:'眼妆·睫毛',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:9,t:3}]},
+    {n:'小火苗睫毛',c:'眼妆·睫毛',a1n:'类型',a2n:'',skus:[{a1:'下睫毛',a2:'',q:31,t:5},{a1:'上睫毛10mm',a2:'',q:10,t:3},{a1:'上睫毛13mm',a2:'',q:5,t:3}]},
+    {n:'鱼尾自然款睫毛',c:'眼妆·睫毛',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:2,t:3}]},
+    // 特殊化妆品
+    {n:'黑人粉底',c:'特殊化妆品',a1n:'规格',a2n:'',skus:[{a1:'标准瓶',a2:'',q:1,t:1}]},
+    {n:'黑人散粉',c:'特殊化妆品',a1n:'规格',a2n:'',skus:[{a1:'标准瓶',a2:'',q:1,t:1}]},
+    {n:'紫色散粉',c:'特殊化妆品',a1n:'规格',a2n:'',skus:[{a1:'标准瓶',a2:'',q:1,t:1}]},
+    {n:'深色散粉',c:'特殊化妆品',a1n:'规格',a2n:'',skus:[{a1:'标准瓶',a2:'',q:1,t:1}]},
+    {n:'歌剧魅影散粉',c:'特殊化妆品',a1n:'规格',a2n:'',skus:[{a1:'180克',a2:'',q:1,t:1}]},
+    {n:'面膜',c:'特殊化妆品',a1n:'规格',a2n:'',skus:[{a1:'1箱36片',a2:'',q:1,t:1}]},
+    // 造型物
+    {n:'U夹',c:'造型物',a1n:'规格',a2n:'',skus:[{a1:'标准盒',a2:'',q:8,t:3}]},
+    {n:'一字夹',c:'造型物',a1n:'规格',a2n:'',skus:[{a1:'大盒',a2:'',q:3,t:3},{a1:'小盒',a2:'',q:3,t:3}]},
+    {n:'发蜡棒',c:'造型物',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:2,t:3}]},
+    {n:'发际线粉',c:'造型物',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:1,t:1}]},
+    {n:'发胶',c:'造型物',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:19,t:5}]},
+    {n:'啫喱',c:'造型物',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:5,t:3}]},
+    {n:'假发精油',c:'造型物',a1n:'规格',a2n:'',skus:[{a1:'标准瓶',a2:'',q:3,t:3}]},
+    {n:'喷黑',c:'造型物',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:9,t:3}]},
+    {n:'雪花喷雾',c:'造型物',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:2,t:1}]},
+    {n:'静电喷雾',c:'造型物',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:7,t:3}]},
+    // 工具
+    {n:'刀片',c:'工具',a1n:'规格',a2n:'',skus:[{a1:'标准盒',a2:'',q:12,t:3}]},
+    {n:'免洗洗手液',c:'工具',a1n:'规格',a2n:'',skus:[{a1:'标准瓶',a2:'',q:3,t:3}]},
+    {n:'收银纸',c:'工具',a1n:'规格',a2n:'',skus:[{a1:'32卷大',a2:'',q:32,t:5},{a1:'6卷小',a2:'',q:6,t:3}]},
+    {n:'一次性水杯',c:'工具',a1n:'规格',a2n:'',skus:[{a1:'6条装',a2:'',q:6,t:3}]},
+    {n:'棉签',c:'工具',a1n:'规格',a2n:'',skus:[{a1:'大盒',a2:'',q:6,t:3}]},
+    {n:'卸妆湿巾',c:'工具',a1n:'规格',a2n:'',skus:[{a1:'标准',a2:'',q:10,t:3}]},
+    {n:'口罩',c:'工具',a1n:'规格',a2n:'',skus:[{a1:'标准包（需补货）',a2:'',q:2,t:3}]},
   ];
-  const skuMap = {
-    '粉底液':['01自然','02亮肤','03遮瑕'],
-    '粉膏':['自然色','亮肤色','遮瑕款'],
-    '隔离':['白色版','紫色版'],
-    '遮瑕':['01号','02号'],
-    '散粉':['蜜粉版','定妆版'],
-    '定妆喷雾':['80ml'],
-    '粉扑':['圆形大','三角小'],
-    '美妆蛋':['白色','粉色'],
-    '无痕假睫毛':['自然款','浓密款'],
-    '睫毛胶':['小支装','大支装'],
-    '双眼皮贴':['隐形款','纤维条'],
-    '眉笔':['黑色','棕色'],
-    '眼影':['大地色盘','暖棕色盘'],
-    '腮红':['珊瑚色','玫瑰色'],
-    '修容':['浅棕'],
-    '高光':['香槟金','珍珠白'],
-    '口红':['正红','豆沙','裸色'],
-    '唇釉':['番茄红','玫红'],
-    '卸妆水':['200ml'],
-    '卸妆油':['150ml'],
-    '卸妆棉':['圆形棉','方形棉'],
-    '棉签':['普通款'],
-    '洗脸巾':['一次性'],
-    '定型发胶':['250ml'],
-    '一次性辅助耗材':['发网','束发带'],
-  };
-  const slSkus = {
-    '分段仙子睫毛':[{a1:'YY款',a2:'8mm',q:5},{a1:'YY款',a2:'10mm',q:2},{a1:'仙子款',a2:'9mm',q:8}]
-  };
 
-  const products = [], skus = [];
-  let pid = 100, sid = 1000;
-  prods.forEach(p => {
-    const id = pid++;
-    products.push({id, name:p.n, cat:p.c, a1n:p.a1n, a2n:p.a2n, disabled:false});
-    if (slSkus[p.n]) {
-      slSkus[p.n].forEach(s => skus.push({id:sid++,pid:id,a1:s.a1,a2:s.a2,qty:s.q,threshold:3,disabled:false}));
-    } else if (skuMap[p.n]) {
-      skuMap[p.n].forEach(v => skus.push({id:sid++,pid:id,a1:v,a2:'',qty:Math.floor(Math.random()*8)+1,threshold:3,disabled:false}));
-    }
+  const products=[],skus=[];let pid=100,sid=1000;
+  items.forEach(item=>{
+    const id=pid++;
+    products.push({id,name:item.n,cat:item.c,a1n:item.a1n,a2n:item.a2n,disabled:false});
+    item.skus.forEach(s=>skus.push({id:sid++,pid:id,a1:s.a1,a2:s.a2,qty:s.q,threshold:s.t,disabled:false}));
   });
-
   return {
-    products, skus, records: [],
-    accounts: [
+    products,skus,records:[],
+    accounts:[
       {id:'super',name:'超级管理员',role:'super',pw:'super888',disabled:false},
       {id:'admin',name:'店长',role:'admin',pw:'admin',disabled:false},
       {id:'staff',name:'员工',role:'staff',pw:'123',disabled:false},
     ],
-    _pid: pid, _sid: sid
+    _pid:pid,_sid:sid
   };
 }
 
-// ===================== STATE =====================
-let DB = {};
-let CU = null; // current user object
-
-// ===================== BOOT =====================
-(function init() {
-  const saved = loadDB();
-  if (saved) {
-    DB = saved;
-    // 修复缺少字段
-    if (!DB._pid) DB._pid = 200;
-    if (!DB._sid) DB._sid = 2000;
-    if (!DB.accounts) DB.accounts = buildDefaultDB().accounts;
-  } else {
-    DB = buildDefaultDB();
-    saveDB();
-  }
+// ===== STATE =====
+let DB={},CU=null;
+(function init(){
+  const saved=loadDB();
+  if(saved){DB=saved;if(!DB._pid)DB._pid=300;if(!DB._sid)DB._sid=3000;if(!DB.accounts)DB.accounts=buildRealDB().accounts;}
+  else{DB=buildRealDB();saveDB();}
 })();
 
-// ===================== AUTH =====================
-function doLogin() {
-  const uid = document.getElementById('lu').value.trim();
-  const pw = document.getElementById('lp').value;
-  const errEl = document.getElementById('login-err');
-  if (!uid || !pw) { errEl.textContent = '请填写账号和密码'; return; }
-  const acc = DB.accounts.find(a => a.id === uid && a.pw === pw && !a.disabled);
-  if (!acc) { errEl.textContent = '账号或密码错误，或账号已停用'; return; }
-  errEl.textContent = '';
-  CU = acc;
-  document.getElementById('login-screen').style.display = 'none';
+// ===== AUTH =====
+function doLogin(){
+  const uid=document.getElementById('lu').value.trim();
+  const pw=document.getElementById('lp').value;
+  const errEl=document.getElementById('login-err');
+  if(!uid||!pw){errEl.textContent='请填写账号和密码';return;}
+  const acc=DB.accounts.find(a=>a.id===uid&&a.pw===pw&&!a.disabled);
+  if(!acc){errEl.textContent='账号或密码错误，或账号已停用';return;}
+  errEl.textContent='';CU=acc;
+  document.getElementById('login-screen').style.display='none';
   document.getElementById('app').classList.add('show');
-  document.getElementById('h-user').textContent = acc.name + '（' + acc.id + '）';
-  const rtag = document.getElementById('h-rtag');
-  const roleLabels = {super:'超级管理员', admin:'管理员', staff:'员工'};
-  rtag.textContent = roleLabels[acc.role];
-  rtag.className = 'rtag rtag-' + acc.role;
-  applyPermissions();
-  initCatSelects();
-  renderOv();
+  document.getElementById('h-user').textContent=acc.name+'（'+acc.id+'）';
+  const rt=document.getElementById('h-rtag');
+  rt.textContent={super:'超级管理员',admin:'管理员',staff:'员工'}[acc.role];
+  rt.className='rtag rtag-'+acc.role;
+  applyPerms();initCatSels();renderOv();
+}
+function doLogout(){CU=null;document.getElementById('app').classList.remove('show');document.getElementById('login-screen').style.display='flex';document.getElementById('lu').value='';document.getElementById('lp').value='';document.getElementById('login-err').textContent='';}
+function applyPerms(){
+  const a=CU.role==='admin'||CU.role==='super';
+  const s=CU.role==='super';
+  document.getElementById('nav-products').style.display=a?'':'none';
+  document.getElementById('nav-accounts').style.display=a?'':'none';
+  document.getElementById('nav-danger').style.display=s?'':'none';
+  document.getElementById('adj-col').style.display=a?'':'none';
 }
 
-function doLogout() {
-  CU = null;
-  document.getElementById('app').classList.remove('show');
-  document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('lu').value = '';
-  document.getElementById('lp').value = '';
-  document.getElementById('login-err').textContent = '';
+// ===== NAV =====
+function showPg(pg){
+  document.querySelectorAll('.pg').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.ni').forEach(el=>el.classList.remove('active'));
+  document.getElementById('pg-'+pg).classList.add('active');
+  const ni=document.querySelector('[data-pg="'+pg+'"]');if(ni)ni.classList.add('active');
+  if(pg==='overview'){initCatSels();renderOv();}
+  if(pg==='inbound')initFormCats('in');
+  if(pg==='outbound')initFormCats('out');
+  if(pg==='warning')renderWarn();
+  if(pg==='records')renderRec();
+  if(pg==='products'){fillProdCatF();renderProds();}
+  if(pg==='accounts')renderAccs();
 }
 
-function applyPermissions() {
-  const isAdmin = CU.role === 'admin' || CU.role === 'super';
-  const isSuper = CU.role === 'super';
-  document.getElementById('nav-products').style.display = isAdmin ? '' : 'none';
-  document.getElementById('nav-accounts').style.display = isAdmin ? '' : 'none';
-  document.getElementById('nav-danger').style.display = isSuper ? '' : 'none';
-  document.getElementById('adj-col').style.display = isAdmin ? '' : 'none';
-}
+// ===== HELPERS =====
+function gp(id){return DB.products.find(p=>p.id===id);}
+function gs(id){return DB.skus.find(s=>s.id===id);}
+function pskus(pid){return DB.skus.filter(s=>s.pid===pid&&!s.disabled);}
+function skuLbl(s,p){if(!p)p=gp(s.pid);const pts=[];if(s.a1)pts.push((p.a1n?p.a1n+': ':'')+s.a1);if(s.a2)pts.push((p.a2n?p.a2n+': ':'')+s.a2);return pts.join(' / ')||'默认规格';}
+function fmtTs(ts){const d=new Date(ts);return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+' '+pad(d.getHours())+':'+pad(d.getMinutes());}
+function pad(n){return(n+'').padStart(2,'0');}
+function lowSkus(){return DB.skus.filter(s=>!s.disabled&&s.qty<=s.threshold&&!gp(s.pid)?.disabled);}
+function CATS(){return['化妆品','眼妆·睫毛','造型物','工具','特殊化妆品'];}
+function updateWarnBadge(){const n=lowSkus().length;const b=document.getElementById('warn-badge');n>0?(b.style.display='inline',b.textContent=n):b.style.display='none';}
 
-// ===================== NAVIGATION =====================
-function showPg(pg) {
-  document.querySelectorAll('.pg').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.ni').forEach(el => el.classList.remove('active'));
-  document.getElementById('pg-' + pg).classList.add('active');
-  const ni = document.querySelector('[data-pg="' + pg + '"]');
-  if (ni) ni.classList.add('active');
-  if (pg === 'overview') { initCatSelects(); renderOv(); }
-  if (pg === 'inbound') initFormCats('in');
-  if (pg === 'outbound') initFormCats('out');
-  if (pg === 'warning') renderWarn();
-  if (pg === 'records') renderRec();
-  if (pg === 'products') { fillProdCatFilter(); renderProds(); }
-  if (pg === 'accounts') renderAccs();
+// ===== OVERVIEW =====
+function initCatSels(){
+  const sel=document.getElementById('ov-cat');const cur=sel.value;
+  sel.innerHTML='<option value="">全部分类</option>';
+  CATS().forEach(c=>sel.innerHTML+=`<option${cur===c?' selected':''}>${c}</option>`);
 }
-
-// ===================== HELPERS =====================
-function gp(id) { return DB.products.find(p => p.id === id); }
-function gs(id) { return DB.skus.find(s => s.id === id); }
-function pskus(pid) { return DB.skus.filter(s => s.pid === pid && !s.disabled); }
-function skuLbl(s, p) {
-  if (!p) p = gp(s.pid);
-  const parts = [];
-  if (s.a1) parts.push((p.a1n ? p.a1n + ': ' : '') + s.a1);
-  if (s.a2) parts.push((p.a2n ? p.a2n + ': ' : '') + s.a2);
-  return parts.join(' / ') || '默认规格';
-}
-function fmtTs(ts) {
-  const d = new Date(ts);
-  return d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate())
-    + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes());
-}
-function pad(n) { return (n + '').padStart(2, '0'); }
-function lowSkus() { return DB.skus.filter(s => !s.disabled && s.qty <= s.threshold && !gp(s.pid)?.disabled); }
-function CATS() { return ['底妆类','眼妆类','彩妆类','清洁类','造型类']; }
-
-function updateWarnBadge() {
-  const n = lowSkus().length;
-  const b = document.getElementById('warn-badge');
-  if (n > 0) { b.style.display = 'inline'; b.textContent = n; } else { b.style.display = 'none'; }
-}
-
-// ===================== OVERVIEW =====================
-function initCatSelects() {
-  const sel = document.getElementById('ov-cat');
-  const cur = sel.value;
-  sel.innerHTML = '<option value="">全部分类</option>';
-  CATS().forEach(c => sel.innerHTML += `<option${cur===c?' selected':''}>${c}</option>`);
-}
-
-function renderOv() {
-  const catF = document.getElementById('ov-cat').value;
-  const stF = document.getElementById('ov-st').value;
-  const isAdmin = CU && (CU.role === 'admin' || CU.role === 'super');
-  let total=0, kinds=0, lowN=0, lowItems=[], rows='';
-  DB.skus.filter(s => !s.disabled).forEach(s => {
-    const p = gp(s.pid); if (!p || p.disabled) return;
-    if (catF && p.cat !== catF) return;
-    const isLow = s.qty <= s.threshold;
-    if (stF === 'low' && !isLow) return;
-    if (stF === 'ok' && isLow) return;
-    total += s.qty; kinds++;
-    if (isLow) { lowN++; lowItems.push(p.name + ' ' + skuLbl(s, p)); }
-    const badge = s.qty === 0 ? '<span class="b b-red">已售罄</span>' :
-      isLow ? '<span class="b b-red">需补货</span>' : '<span class="b b-green">正常</span>';
-    const qc = s.qty === 0 ? 'qty-zero' : isLow ? 'qty-low' : 'qty-ok';
-    const adjBtn = isAdmin ? `<td><button class="btn btn-sm" onclick="openAdj(${s.id})">盘点调整</button></td>` : '';
-    rows += `<tr>
-      <td>${p.name}</td>
-      <td><span class="b b-gold">${p.cat}</span></td>
-      <td><span style="font-size:12px;color:var(--ink3)">${skuLbl(s,p)}</span></td>
-      <td><span class="qty ${qc}">${s.qty}</span></td>
-      <td style="color:var(--ink3)">${s.threshold}</td>
-      <td>${badge}</td>
-      ${adjBtn}
-    </tr>`;
+function renderOv(){
+  const catF=document.getElementById('ov-cat').value;
+  const stF=document.getElementById('ov-st').value;
+  const isAdmin=CU&&(CU.role==='admin'||CU.role==='super');
+  let total=0,kinds=0,lowN=0,lowItems=[],rows='';
+  DB.skus.filter(s=>!s.disabled).forEach(s=>{
+    const p=gp(s.pid);if(!p||p.disabled)return;
+    if(catF&&p.cat!==catF)return;
+    const isLow=s.qty<=s.threshold;
+    if(stF==='low'&&!isLow)return;if(stF==='ok'&&isLow)return;
+    total+=s.qty;kinds++;
+    if(isLow){lowN++;lowItems.push(p.name+(s.a1?' ('+s.a1+')':''));}
+    const badge=s.qty===0?'<span class="b b-red">已售罄</span>':isLow?'<span class="b b-red">需补货</span>':'<span class="b b-green">正常</span>';
+    const qc=s.qty===0?'qty-zero':isLow?'qty-low':'qty-ok';
+    const adj=isAdmin?`<td><button class="btn btn-sm" onclick="openAdj(${s.id})">盘点调整</button></td>`:'';
+    rows+=`<tr><td>${p.name}</td><td><span class="b b-gold">${p.cat}</span></td><td style="font-size:12px;color:var(--ink3)">${skuLbl(s,p)}</td><td><span class="qty ${qc}">${s.qty}</span></td><td style="color:var(--ink3)">${s.threshold}</td><td>${badge}</td>${adj}</tr>`;
   });
-  document.getElementById('ov-tbody').innerHTML = rows || '<tr><td colspan="7" class="empty">暂无数据</td></tr>';
-  document.getElementById('ov-cards').innerHTML = `
+  document.getElementById('ov-tbody').innerHTML=rows||'<tr><td colspan="7" class="empty">暂无数据</td></tr>';
+  document.getElementById('ov-cards').innerHTML=`
     <div class="sc"><div class="sc-label">SKU 规格总数</div><div class="sc-value">${kinds}</div></div>
     <div class="sc blue"><div class="sc-label">库存总量</div><div class="sc-value">${total}</div></div>
     <div class="sc red"><div class="sc-label">低库存预警</div><div class="sc-value">${lowN}</div></div>
-    <div class="sc green"><div class="sc-label">今日操作</div><div class="sc-value">${DB.records.filter(r=>{const d=new Date(r.ts),n=new Date();return d.toDateString()===n.toDateString();}).length}</div></div>
-  `;
-  const ab = document.getElementById('ov-alert');
-  if (lowItems.length) {
-    ab.style.display = 'flex';
-    document.getElementById('ov-alert-txt').textContent = lowItems.join('、') + ' — 请及时补货！';
-  } else { ab.style.display = 'none'; }
+    <div class="sc green"><div class="sc-label">今日操作</div><div class="sc-value">${DB.records.filter(r=>{const d=new Date(r.ts),n=new Date();return d.toDateString()===n.toDateString();}).length}</div></div>`;
+  const ab=document.getElementById('ov-alert');
+  if(lowItems.length){ab.style.display='flex';document.getElementById('ov-alert-txt').textContent=lowItems.join('、')+' — 请及时补货！';}
+  else ab.style.display='none';
   updateWarnBadge();
 }
 
-// ===================== IN/OUT FORM — combo input approach =====================
-// 商品名可以自由输入或从列表选择；属性也可以自由输入
-
-function initFormCats(dir) {
-  const sel = document.getElementById(dir + '-cat');
-  sel.innerHTML = '<option value="">— 请选择分类 —</option>';
-  CATS().forEach(c => sel.innerHTML += `<option>${c}</option>`);
-  // reset
-  document.getElementById(dir + '-name').value = '';
-  fillNameList(dir, '');
-  document.getElementById(dir + '-attr-row').style.display = 'none';
-  document.getElementById(dir + '-stock-box').style.display = 'none';
-  if (dir==='in') { document.getElementById('in-qty').value=1; document.getElementById('in-price').value=''; document.getElementById('in-sup').value=''; document.getElementById('in-op').value=''; document.getElementById('in-note').value=''; }
-  if (dir==='out') { document.getElementById('out-qty').value=1; document.getElementById('out-op').value=''; document.getElementById('out-note').value=''; }
+// ===== FORM =====
+function initFormCats(dir){
+  const sel=document.getElementById(dir+'-cat');
+  sel.innerHTML='<option value="">— 请选择分类 —</option>';
+  CATS().forEach(c=>sel.innerHTML+=`<option>${c}</option>`);
+  document.getElementById(dir+'-name').value='';
+  fillNameDl(dir,'');
+  document.getElementById(dir+'-attr-row').style.display='none';
+  document.getElementById(dir+'-stock-box').style.display='none';
+  if(dir==='in'){['in-qty','in-price','in-sup','in-op','in-note'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=id==='in-qty'?1:'';});}
+  if(dir==='out'){['out-qty','out-op','out-note'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=id==='out-qty'?1:'';});}
 }
-
-function onCatChange(dir) {
-  const cat = document.getElementById(dir + '-cat').value;
-  fillNameList(dir, cat);
-  document.getElementById(dir + '-name').value = '';
-  document.getElementById(dir + '-attr-row').style.display = 'none';
-  document.getElementById(dir + '-stock-box').style.display = 'none';
+function onCatChange(dir){const cat=document.getElementById(dir+'-cat').value;fillNameDl(dir,cat);document.getElementById(dir+'-name').value='';document.getElementById(dir+'-attr-row').style.display='none';document.getElementById(dir+'-stock-box').style.display='none';}
+function fillNameDl(dir,cat){
+  const dl=document.getElementById(dir+'-name-dl');
+  dl.innerHTML=DB.products.filter(p=>!p.disabled&&(!cat||p.cat===cat)).map(p=>`<option value="${p.name}">`).join('');
 }
-
-function fillNameList(dir, cat) {
-  const dl = document.getElementById(dir + '-name-list');
-  const prods = DB.products.filter(p => !p.disabled && (!cat || p.cat === cat));
-  dl.innerHTML = prods.map(p => `<option value="${p.name}">`).join('');
-}
-
-function onNameInput(dir) {
-  const name = document.getElementById(dir + '-name').value.trim();
-  const p = DB.products.find(pp => pp.name === name && !pp.disabled);
-  const attrRow = document.getElementById(dir + '-attr-row');
-  if (p) {
-    // known product — show attr selects
-    const a1g = document.getElementById(dir + '-a1g');
-    const a2g = document.getElementById(dir + '-a2g');
-    const a1 = document.getElementById(dir + '-a1');
-    const a2 = document.getElementById(dir + '-a2');
-    const dl1 = document.getElementById(dir + '-a1-list');
-    const dl2 = document.getElementById(dir + '-a2-list');
-    if (p.a1n) {
-      document.getElementById(dir + '-a1l').innerHTML = p.a1n + ' <span class="req">*</span>';
-      const vals = [...new Set(pskus(p.id).map(s=>s.a1).filter(Boolean))];
-      dl1.innerHTML = vals.map(v=>`<option value="${v}">`).join('');
-      a1.value = ''; a1g.style.display = 'flex';
-    } else { a1g.style.display = 'none'; }
-    if (p.a2n) {
-      document.getElementById(dir + '-a2l').textContent = p.a2n;
-      a2.value = ''; a2g.style.display = 'flex';
-    } else { a2g.style.display = 'none'; a2.value = ''; }
-    attrRow.style.display = 'grid';
-  } else {
-    // unknown product — still show attr fields for new entry
-    const a1g = document.getElementById(dir + '-a1g');
-    const a2g = document.getElementById(dir + '-a2g');
-    document.getElementById(dir + '-a1l').innerHTML = '属性1（如色号/型号）';
-    document.getElementById(dir + '-a1-list').innerHTML = '';
-    document.getElementById(dir + '-a2l').textContent = '属性2（可选）';
-    document.getElementById(dir + '-a2-list').innerHTML = '';
-    a1g.style.display = 'flex'; a2g.style.display = 'flex';
-    attrRow.style.display = 'grid';
+function onNameInput(dir){
+  const name=document.getElementById(dir+'-name').value.trim();
+  const p=DB.products.find(pp=>pp.name===name&&!pp.disabled);
+  const ar=document.getElementById(dir+'-attr-row');
+  if(p){
+    if(p.a1n){document.getElementById(dir+'-a1l').innerHTML=p.a1n+' <span class="req">*</span>';const vals=[...new Set(pskus(p.id).map(s=>s.a1).filter(Boolean))];document.getElementById(dir+'-a1-dl').innerHTML=vals.map(v=>`<option value="${v}">`).join('');document.getElementById(dir+'-a1g').style.display='flex';}else document.getElementById(dir+'-a1g').style.display='none';
+    if(p.a2n){document.getElementById(dir+'-a2l').textContent=p.a2n;document.getElementById(dir+'-a2g').style.display='flex';}else document.getElementById(dir+'-a2g').style.display='none';
+    ar.style.display='grid';
+  }else{
+    document.getElementById(dir+'-a1l').innerHTML='属性1（如色号/型号）';document.getElementById(dir+'-a1-dl').innerHTML='';document.getElementById(dir+'-a2l').textContent='属性2（可选）';document.getElementById(dir+'-a2-dl').innerHTML='';
+    document.getElementById(dir+'-a1g').style.display='flex';document.getElementById(dir+'-a2g').style.display='flex';ar.style.display='grid';
   }
-  updateStockBox(dir);
+  updateSBox(dir);
 }
-
-function onAttrInput(dir) {
-  const name = document.getElementById(dir + '-name').value.trim();
-  const p = DB.products.find(pp => pp.name === name && !pp.disabled);
-  if (p && p.a2n) {
-    const a1v = document.getElementById(dir + '-a1').value;
-    const vals2 = [...new Set(pskus(p.id).filter(s=>s.a1===a1v).map(s=>s.a2).filter(Boolean))];
-    document.getElementById(dir + '-a2-list').innerHTML = vals2.map(v=>`<option value="${v}">`).join('');
-  }
-  updateStockBox(dir);
+function onAttrInput(dir){
+  const name=document.getElementById(dir+'-name').value.trim();
+  const p=DB.products.find(pp=>pp.name===name&&!pp.disabled);
+  if(p&&p.a2n){const a1v=document.getElementById(dir+'-a1').value;const vals2=[...new Set(pskus(p.id).filter(s=>s.a1===a1v).map(s=>s.a2).filter(Boolean))];document.getElementById(dir+'-a2-dl').innerHTML=vals2.map(v=>`<option value="${v}">`).join('');}
+  updateSBox(dir);
 }
-
-function findOrCreateSku(dir) {
-  // Returns {sku, product, isNew} — creates records in DB if needed
-  const name = document.getElementById(dir + '-name').value.trim();
-  if (!name) return null;
-  const a1v = document.getElementById(dir + '-a1').value.trim();
-  const a2v = document.getElementById(dir + '-a2').value.trim();
-
-  let p = DB.products.find(pp => pp.name === name && !pp.disabled);
-  if (!p) {
-    // auto-create product
-    const a1label = document.getElementById(dir + '-a1l').textContent.replace(' *','').trim();
-    const pid = DB._pid++;
-    p = {id:pid, name, cat:'底妆类', a1n:a1label||'属性', a2n:'', disabled:false};
-    DB.products.push(p);
-  }
-
-  let sku = DB.skus.find(s => s.pid === p.id && s.a1 === a1v && s.a2 === (a2v||'') && !s.disabled);
-  const isNew = !sku;
-  if (!sku) {
-    const sid = DB._sid++;
-    sku = {id:sid, pid:p.id, a1:a1v, a2:a2v||'', qty:0, threshold:3, disabled:false};
-    DB.skus.push(sku);
-  }
-  return {sku, p, isNew};
+function updateSBox(dir){
+  const name=document.getElementById(dir+'-name').value.trim();
+  const a1v=document.getElementById(dir+'-a1').value.trim();
+  const a2v=document.getElementById(dir+'-a2').value.trim();
+  const el=document.getElementById(dir+'-stock-box');
+  if(!name){el.style.display='none';return;}
+  const p=DB.products.find(pp=>pp.name===name&&!pp.disabled);if(!p){el.style.display='none';return;}
+  const sku=DB.skus.find(s=>s.pid===p.id&&s.a1===a1v&&s.a2===(a2v||'')&&!s.disabled);
+  if(sku){const isLow=sku.qty<=sku.threshold;el.style.display='block';el.className='stock-box'+(isLow?' low':'');el.innerHTML=`当前库存：<strong>${sku.qty} 个</strong>${isLow?' ⚑ 已低于预警值':''}`;}
+  else el.style.display='none';
 }
-
-function updateStockBox(dir) {
-  const name = document.getElementById(dir + '-name').value.trim();
-  const a1v = document.getElementById(dir + '-a1').value.trim();
-  const a2v = document.getElementById(dir + '-a2').value.trim();
-  const el = document.getElementById(dir + '-stock-box');
-  if (!name) { el.style.display = 'none'; return; }
-  const p = DB.products.find(pp => pp.name === name && !pp.disabled);
-  if (!p) { el.style.display = 'none'; return; }
-  const sku = DB.skus.find(s => s.pid === p.id && s.a1 === a1v && s.a2 === (a2v||'') && !s.disabled);
-  if (sku) {
-    const isLow = sku.qty <= sku.threshold;
-    el.style.display = 'block';
-    el.className = 'stock-box' + (isLow ? ' low' : '');
-    el.innerHTML = `当前库存：<strong>${sku.qty} 个</strong>${isLow ? ' &nbsp;⚑ 已低于预警值' : ''}`;
-  } else { el.style.display = 'none'; }
+function findOrCreate(dir){
+  const name=document.getElementById(dir+'-name').value.trim();if(!name)return null;
+  const a1v=document.getElementById(dir+'-a1').value.trim();
+  const a2v=document.getElementById(dir+'-a2').value.trim();
+  let p=DB.products.find(pp=>pp.name===name&&!pp.disabled);
+  if(!p){const a1label=document.getElementById(dir+'-a1l').textContent.replace(' *','').trim();const pid=DB._pid++;p={id:pid,name,cat:'化妆品',a1n:a1label||'属性',a2n:'',disabled:false};DB.products.push(p);}
+  let sku=DB.skus.find(s=>s.pid===p.id&&s.a1===a1v&&s.a2===(a2v||'')&&!s.disabled);
+  const isNew=!sku;
+  if(!sku){const sid=DB._sid++;sku={id:sid,pid:p.id,a1:a1v,a2:a2v||'',qty:0,threshold:3,disabled:false};DB.skus.push(sku);}
+  return{sku,p,isNew};
 }
+function resetForm(dir){initFormCats(dir);}
 
-function resetForm(dir) { initFormCats(dir); }
-
-// ===================== INBOUND =====================
-function doInbound() {
-  const name = document.getElementById('in-name').value.trim();
-  if (!name) { toast('请填写商品名称', 'err'); return; }
-  const qty = parseInt(document.getElementById('in-qty').value);
-  if (!qty || qty < 1) { toast('入库数量需大于0', 'err'); return; }
-  const op = document.getElementById('in-op').value.trim();
-  if (!op) { toast('操作人员为必填项', 'err'); document.getElementById('in-op').classList.add('err'); return; }
+// ===== INBOUND =====
+function doInbound(){
+  const name=document.getElementById('in-name').value.trim();if(!name){toast('请填写商品名称','err');return;}
+  const qty=parseInt(document.getElementById('in-qty').value);if(!qty||qty<1){toast('入库数量需大于0','err');return;}
+  const op=document.getElementById('in-op').value.trim();if(!op){toast('操作人员为必填项','err');document.getElementById('in-op').classList.add('err');return;}
   document.getElementById('in-op').classList.remove('err');
-
-  const res = findOrCreateSku('in');
-  if (!res) { toast('请填写商品名称', 'err'); return; }
-  const {sku, p} = res;
-  const prev = sku.qty;
-  sku.qty += qty;
-  DB.records.unshift({
-    ts: Date.now(), type: 'in', pid: p.id, skuId: sku.id,
-    qty, prevQty: prev, afterQty: sku.qty,
-    operator: op,
-    note: [document.getElementById('in-sup').value, document.getElementById('in-note').value].filter(Boolean).join('；'),
-    price: document.getElementById('in-price').value || ''
-  });
-  saveDB();
-  toast(`入库成功！${p.name} 当前库存：${sku.qty} 个`, 'ok');
-  resetForm('in');
-  updateWarnBadge();
+  const res=findOrCreate('in');if(!res){toast('请填写商品名称','err');return;}
+  const{sku,p}=res;const prev=sku.qty;sku.qty+=qty;
+  DB.records.unshift({ts:Date.now(),type:'in',pid:p.id,skuId:sku.id,qty,prevQty:prev,afterQty:sku.qty,operator:op,note:[document.getElementById('in-sup').value,document.getElementById('in-note').value].filter(Boolean).join('；'),price:document.getElementById('in-price').value||''});
+  saveDB();toast(`入库成功！${p.name} 当前库存：${sku.qty} 个`,'ok');resetForm('in');updateWarnBadge();
 }
 
-// ===================== OUTBOUND =====================
-function doOutbound() {
-  const name = document.getElementById('out-name').value.trim();
-  if (!name) { toast('请填写商品名称', 'err'); return; }
-  const qty = parseInt(document.getElementById('out-qty').value);
-  if (!qty || qty < 1) { toast('出库数量需大于0', 'err'); return; }
-  const op = document.getElementById('out-op').value.trim();
-  if (!op) { toast('操作人员为必填项', 'err'); document.getElementById('out-op').classList.add('err'); return; }
+// ===== OUTBOUND =====
+function doOutbound(){
+  const name=document.getElementById('out-name').value.trim();if(!name){toast('请填写商品名称','err');return;}
+  const qty=parseInt(document.getElementById('out-qty').value);if(!qty||qty<1){toast('出库数量需大于0','err');return;}
+  const op=document.getElementById('out-op').value.trim();if(!op){toast('操作人员为必填项','err');document.getElementById('out-op').classList.add('err');return;}
   document.getElementById('out-op').classList.remove('err');
-
-  const a1v = document.getElementById('out-a1').value.trim();
-  const a2v = document.getElementById('out-a2').value.trim();
-  const p = DB.products.find(pp => pp.name === name && !pp.disabled);
-  if (!p) { toast('找不到该商品，出库前请先入库建立库存', 'err'); return; }
-  const sku = DB.skus.find(s => s.pid === p.id && s.a1 === a1v && s.a2 === (a2v||'') && !s.disabled);
-  if (!sku) { toast('找不到对应规格，请确认规格是否正确', 'err'); return; }
-  if (qty > sku.qty) { toast(`库存不足！当前仅剩 ${sku.qty} 个，无法出库 ${qty} 个`, 'err'); return; }
-
-  const prev = sku.qty;
-  sku.qty -= qty;
-  DB.records.unshift({
-    ts: Date.now(), type: 'out', subtype: document.getElementById('out-type').value,
-    pid: p.id, skuId: sku.id, qty, prevQty: prev, afterQty: sku.qty,
-    operator: op, note: document.getElementById('out-note').value
-  });
+  const a1v=document.getElementById('out-a1').value.trim();
+  const a2v=document.getElementById('out-a2').value.trim();
+  const p=DB.products.find(pp=>pp.name===name&&!pp.disabled);
+  if(!p){toast('找不到该商品，出库前请先入库','err');return;}
+  const sku=DB.skus.find(s=>s.pid===p.id&&s.a1===a1v&&s.a2===(a2v||'')&&!s.disabled);
+  if(!sku){toast('找不到对应规格，请确认规格是否正确','err');return;}
+  if(qty>sku.qty){toast(`库存不足！当前仅剩 ${sku.qty} 个，无法出库 ${qty} 个`,'err');return;}
+  const prev=sku.qty;sku.qty-=qty;
+  DB.records.unshift({ts:Date.now(),type:'out',subtype:document.getElementById('out-type').value,pid:p.id,skuId:sku.id,qty,prevQty:prev,afterQty:sku.qty,operator:op,note:document.getElementById('out-note').value});
   saveDB();
-  if (sku.qty <= sku.threshold) {
-    toast(`出库成功！⚑ 库存剩余 ${sku.qty} 个，已低于预警值，请及时补货`, 'err');
-  } else {
-    toast(`出库成功！当前库存：${sku.qty} 个`, 'ok');
-  }
-  resetForm('out');
-  updateWarnBadge();
+  sku.qty<=sku.threshold?toast(`出库成功！⚑ 库存剩余 ${sku.qty} 个，已低于预警值，请补货`,'err'):toast(`出库成功！当前库存：${sku.qty} 个`,'ok');
+  resetForm('out');updateWarnBadge();
 }
 
-// ===================== WARNING =====================
-function renderWarn() {
-  const lows = lowSkus();
-  let html = '';
-  if (!lows.length) {
-    html = '<div class="card"><div class="card-body"><div class="empty">✓ 当前无低库存预警，库存状态良好</div></div></div>';
-  } else {
-    html = `<div class="abar"><div class="abar-icon">⚑</div><div class="abar-text"><strong>共 ${lows.length} 个规格库存不足</strong></div></div>`;
-    html += '<div class="card"><div class="tw"><table><thead><tr><th>商品名称</th><th>分类</th><th>规格属性</th><th>当前库存</th><th>预警值</th><th>状态</th></tr></thead><tbody>';
-    lows.forEach(s => {
-      const p = gp(s.pid); if (!p || p.disabled) return;
-      html += `<tr><td>${p.name}</td><td><span class="b b-gold">${p.cat}</span></td><td style="font-size:12px;color:var(--ink3)">${skuLbl(s,p)}</td><td class="qty qty-low">${s.qty}</td><td>${s.threshold}</td><td><span class="b b-red">${s.qty===0?'已售罄':'需补货'}</span></td></tr>`;
-    });
-    html += '</tbody></table></div></div>';
+// ===== WARNING =====
+function renderWarn(){
+  const lows=lowSkus();let html='';
+  if(!lows.length){html='<div class="card"><div class="card-body"><div class="empty">✓ 当前无低库存预警，库存状态良好</div></div></div>';}
+  else{
+    html=`<div class="abar"><div class="abar-icon">⚑</div><div class="abar-text"><strong>共 ${lows.length} 个规格库存不足</strong></div></div>`;
+    html+='<div class="card"><div class="tw"><table><thead><tr><th>商品名称</th><th>分类</th><th>规格属性</th><th>当前库存</th><th>预警值</th><th>状态</th></tr></thead><tbody>';
+    lows.forEach(s=>{const p=gp(s.pid);if(!p||p.disabled)return;html+=`<tr><td>${p.name}</td><td><span class="b b-gold">${p.cat}</span></td><td style="font-size:12px;color:var(--ink3)">${skuLbl(s,p)}</td><td class="qty qty-low">${s.qty}</td><td>${s.threshold}</td><td><span class="b b-red">${s.qty===0?'已售罄':'需补货'}</span></td></tr>`;});
+    html+='</tbody></table></div></div>';
   }
-  document.getElementById('warn-content').innerHTML = html;
+  document.getElementById('warn-content').innerHTML=html;
 }
 
-// ===================== RECORDS =====================
-const OUT_T = {use:'正常使用',loss:'破损报废',sample:'样品试用',gift:'赠品外带'};
-
-function renderRec() {
-  const tf = document.getElementById('rec-tf').value;
-  const sq = document.getElementById('rec-sq').value.toLowerCase();
-  let rows = '';
-  DB.records.filter(r => {
-    if (tf && r.type !== tf) return false;
-    if (sq) { const p = gp(r.pid); if (!p || !p.name.toLowerCase().includes(sq)) return false; }
-    return true;
-  }).forEach(r => {
-    const p = gp(r.pid), s = gs(r.skuId);
-    let tbadge = r.type === 'in' ? '<span class="b b-in">入库</span>' :
-      r.type === 'adjust' ? '<span class="b b-gold">盘点调整</span>' :
-      `<span class="b b-out">${OUT_T[r.subtype]||'出库'}</span>`;
-    const ch = r.type==='in'?`<span style="color:var(--green)">+${r.qty}</span>`:
-      r.type==='adjust'?`<span style="color:var(--gold)">→${r.qty}</span>`:
-      `<span style="color:var(--red)">-${r.qty}</span>`;
-    rows += `<tr>
-      <td style="font-size:11px;color:var(--ink3);white-space:nowrap">${fmtTs(r.ts)}</td>
-      <td>${tbadge}</td>
-      <td>${p?p.name:'—'}</td>
-      <td style="font-size:12px;color:var(--ink3)">${s?skuLbl(s,p):'—'}</td>
-      <td>${ch}</td>
-      <td style="color:var(--ink3)">${r.prevQty!=null?r.prevQty:'—'}</td>
-      <td style="font-weight:500">${r.afterQty!=null?r.afterQty:'—'}</td>
-      <td>${r.operator||'—'}</td>
-      <td style="font-size:12px;color:var(--ink3)">${r.note||'—'}</td>
-    </tr>`;
+// ===== RECORDS =====
+const OUT_T={use:'正常使用',loss:'破损报废',sample:'样品试用',gift:'赠品外带'};
+function renderRec(){
+  const tf=document.getElementById('rec-tf').value;
+  const sq=document.getElementById('rec-sq').value.toLowerCase();
+  let rows='';
+  DB.records.filter(r=>{if(tf&&r.type!==tf)return false;if(sq){const p=gp(r.pid);if(!p||!p.name.toLowerCase().includes(sq))return false;}return true;}).forEach(r=>{
+    const p=gp(r.pid),s=gs(r.skuId);
+    const tb=r.type==='in'?'<span class="b b-in">入库</span>':r.type==='adjust'?'<span class="b b-gold">盘点调整</span>':`<span class="b b-out">${OUT_T[r.subtype]||'出库'}</span>`;
+    const ch=r.type==='in'?`<span style="color:var(--green)">+${r.qty}</span>`:r.type==='adjust'?`<span style="color:var(--gold)">→${r.qty}</span>`:`<span style="color:var(--red)">-${r.qty}</span>`;
+    rows+=`<tr><td style="font-size:11px;color:var(--ink3);white-space:nowrap">${fmtTs(r.ts)}</td><td>${tb}</td><td>${p?p.name:'—'}</td><td style="font-size:12px;color:var(--ink3)">${s?skuLbl(s,p):'—'}</td><td>${ch}</td><td style="color:var(--ink3)">${r.prevQty!=null?r.prevQty:'—'}</td><td style="font-weight:500">${r.afterQty!=null?r.afterQty:'—'}</td><td>${r.operator||'—'}</td><td style="font-size:12px;color:var(--ink3)">${r.note||'—'}</td></tr>`;
   });
-  document.getElementById('rec-tbody').innerHTML = rows || '<tr><td colspan="9" class="empty">暂无记录</td></tr>';
+  document.getElementById('rec-tbody').innerHTML=rows||'<tr><td colspan="9" class="empty">暂无记录</td></tr>';
 }
 
-// ===================== ADJUST =====================
-let _adjSkuId = null;
-function openAdj(sid) {
-  _adjSkuId = sid; const s = gs(sid), p = gp(s.pid);
-  document.getElementById('adj-info').textContent = `${p.name} — ${skuLbl(s,p)}，当前库存：${s.qty} 个`;
-  document.getElementById('adj-qty').value = s.qty;
-  document.getElementById('adj-op').value = '';
-  document.getElementById('adj-note').value = '';
-  openMod('m-adjust');
-}
-function saveAdj() {
-  const s = gs(_adjSkuId);
-  const newQty = parseInt(document.getElementById('adj-qty').value);
-  if (isNaN(newQty) || newQty < 0) { toast('请填写有效数量', 'err'); return; }
-  const op = document.getElementById('adj-op').value.trim();
-  if (!op) { toast('操作人员为必填项', 'err'); return; }
-  const note = document.getElementById('adj-note').value || '盘点调整';
+// ===== ADJUST =====
+let _adjSid=null;
+function openAdj(sid){_adjSid=sid;const s=gs(sid),p=gp(s.pid);document.getElementById('adj-info').textContent=`${p.name} — ${skuLbl(s,p)}，当前库存：${s.qty} 个`;document.getElementById('adj-qty').value=s.qty;document.getElementById('adj-op').value='';document.getElementById('adj-note').value='';openMod('m-adjust');}
+function saveAdj(){
+  const s=gs(_adjSid);const newQty=parseInt(document.getElementById('adj-qty').value);
+  if(isNaN(newQty)||newQty<0){toast('请填写有效数量','err');return;}
+  const op=document.getElementById('adj-op').value.trim();if(!op){toast('操作人员为必填项','err');return;}
+  const note=document.getElementById('adj-note').value||'盘点调整';
   DB.records.unshift({ts:Date.now(),type:'adjust',pid:s.pid,skuId:s.id,qty:newQty,prevQty:s.qty,afterQty:newQty,operator:op,note});
-  s.qty = newQty;
-  saveDB(); closeMod('m-adjust'); renderOv(); toast('库存调整成功', 'ok');
+  s.qty=newQty;saveDB();closeMod('m-adjust');renderOv();toast('库存调整成功','ok');
 }
 
-// ===================== PRODUCTS =====================
-let _editPid = null, _skuPid = null, _disPid = null;
-
-function fillProdCatFilter() {
-  const sel = document.getElementById('prod-cat-f');
-  const cur = sel.value;
-  sel.innerHTML = '<option value="">全部分类</option>';
-  CATS().forEach(c => sel.innerHTML += `<option${cur===c?' selected':''}>${c}</option>`);
-}
-
-function renderProds() {
-  const catF = document.getElementById('prod-cat-f').value;
-  const stF = document.getElementById('prod-st-f').value;
-  const isAdmin = CU && (CU.role==='admin'||CU.role==='super');
-  const list = DB.products.filter(p => {
-    if (catF && p.cat !== catF) return false;
-    if (stF==='active' && p.disabled) return false;
-    if (stF==='off' && !p.disabled) return false;
-    return true;
+// ===== PRODUCTS =====
+let _editPid=null,_skuPid=null,_disPid=null;
+function fillProdCatF(){const sel=document.getElementById('prod-cat-f');const cur=sel.value;sel.innerHTML='<option value="">全部分类</option>';CATS().forEach(c=>sel.innerHTML+=`<option${cur===c?' selected':''}>${c}</option>`);}
+function renderProds(){
+  const catF=document.getElementById('prod-cat-f').value;const stF=document.getElementById('prod-st-f').value;
+  const isAdmin=CU&&(CU.role==='admin'||CU.role==='super');
+  const list=DB.products.filter(p=>{if(catF&&p.cat!==catF)return false;if(stF==='active'&&p.disabled)return false;if(stF==='off'&&!p.disabled)return false;return true;});
+  if(!list.length){document.getElementById('prods-wrap').innerHTML='<div class="empty">暂无商品</div>';return;}
+  let html='<div class="pgrid">';
+  list.forEach(p=>{
+    const skus=DB.skus.filter(s=>s.pid===p.id);
+    const chips=skus.map(s=>{const cls=(!s.disabled&&s.qty<=s.threshold)?'low':(s.disabled?'':'');return`<span class="sku-chip ${cls}">${skuLbl(s,p)}：${s.qty}${s.disabled?'[停]':''}</span>`;}).join('');
+    const acts=isAdmin?`<div class="pc-actions"><button class="btn btn-sm" onclick="openAddSku(${p.id})">+ 规格</button><button class="btn btn-sm" onclick="openEditProd(${p.id})">编辑</button>${!p.disabled?`<button class="btn btn-sm" style="color:var(--red)" onclick="openDis(${p.id})">停用</button>`:`<button class="btn btn-sm" onclick="enableProd(${p.id})">启用</button>`}</div>`:'';
+    html+=`<div class="pc${p.disabled?' off':''}"><div class="pc-name">${p.name}${p.disabled?'<span class="b b-gray" style="margin-left:6px;font-size:10px">已停用</span>':''}</div><div style="font-size:11px;color:var(--ink3);margin-bottom:4px"><span class="b b-gold">${p.cat}</span>${p.a1n?`<span style="margin-left:6px">${p.a1n}${p.a2n?' / '+p.a2n:''}</span>`:''}</div><div class="pc-skus">${chips||'<span style="font-size:11px;color:var(--ink3)">暂无规格</span>'}</div>${acts}</div>`;
   });
-  if (!list.length) { document.getElementById('prods-wrap').innerHTML = '<div class="empty">暂无商品</div>'; return; }
-  let html = '<div class="pgrid">';
-  list.forEach(p => {
-    const skus = DB.skus.filter(s => s.pid===p.id);
-    const chips = skus.map(s => {
-      const cls = (!s.disabled && s.qty<=s.threshold)?'low':(s.disabled?'':'');
-      return `<span class="sku-chip ${cls}">${skuLbl(s,p)}：${s.qty}${s.disabled?'[停]':''}</span>`;
-    }).join('');
-    const actions = isAdmin ? `<div class="pc-actions">
-      <button class="btn btn-sm" onclick="openAddSku(${p.id})">+ 规格</button>
-      <button class="btn btn-sm" onclick="openEditProd(${p.id})">编辑</button>
-      ${!p.disabled?`<button class="btn btn-sm" style="color:var(--red)" onclick="openDis(${p.id})">停用</button>`:`<button class="btn btn-sm" onclick="enableProd(${p.id})">启用</button>`}
-    </div>` : '';
-    html += `<div class="pc${p.disabled?' off':''}">
-      <div class="pc-name">${p.name}${p.disabled?'<span class="b b-gray" style="margin-left:6px;font-size:10px">已停用</span>':''}</div>
-      <div style="font-size:11px;color:var(--ink3);margin-bottom:4px"><span class="b b-gold">${p.cat}</span>${p.a1n?`<span style="margin-left:6px">${p.a1n}${p.a2n?' / '+p.a2n:''}</span>`:''}</div>
-      <div class="pc-skus">${chips||'<span style="font-size:11px;color:var(--ink3)">暂无规格</span>'}</div>
-      ${actions}
-    </div>`;
+  html+='</div>';document.getElementById('prods-wrap').innerHTML=html;
+}
+function openAddProd(){_editPid=null;document.getElementById('m-prod-title').textContent='新增商品';['mp-name','mp-a1n','mp-a2n','mp-a1v','mp-a2v','mp-op'].forEach(id=>document.getElementById(id).value='');document.getElementById('mp-qty').value=0;document.getElementById('mp-thr').value=3;document.getElementById('mp-cat').value='化妆品';document.getElementById('mp-sku-section').style.display='block';openMod('m-prod');}
+function openEditProd(pid){_editPid=pid;const p=gp(pid);document.getElementById('m-prod-title').textContent='编辑商品：'+p.name;document.getElementById('mp-name').value=p.name;document.getElementById('mp-cat').value=p.cat;document.getElementById('mp-a1n').value=p.a1n||'';document.getElementById('mp-a2n').value=p.a2n||'';document.getElementById('mp-a1v').value='';document.getElementById('mp-a2v').value='';document.getElementById('mp-qty').value=0;document.getElementById('mp-thr').value=3;document.getElementById('mp-op').value='';document.getElementById('mp-sku-section').style.display='none';openMod('m-prod');}
+function saveProd(){
+  const name=document.getElementById('mp-name').value.trim();if(!name){toast('请填写商品名称','err');return;}
+  const op=document.getElementById('mp-op').value.trim();if(!op){toast('操作人员为必填项','err');return;}
+  const cat=document.getElementById('mp-cat').value;const a1n=document.getElementById('mp-a1n').value.trim();const a2n=document.getElementById('mp-a2n').value.trim();
+  if(_editPid){const p=gp(_editPid);p.name=name;p.cat=cat;p.a1n=a1n;p.a2n=a2n;DB.records.unshift({ts:Date.now(),type:'edit',pid:p.id,skuId:null,qty:0,prevQty:0,afterQty:0,operator:op,note:'编辑商品'});}
+  else{const pid=DB._pid++;DB.products.push({id:pid,name,cat,a1n,a2n,disabled:false});const a1v=document.getElementById('mp-a1v').value.trim();const a2v=document.getElementById('mp-a2v').value.trim();const qty=parseInt(document.getElementById('mp-qty').value)||0;const thr=parseInt(document.getElementById('mp-thr').value)||3;const sid=DB._sid++;DB.skus.push({id:sid,pid,a1:a1v,a2:a2v,qty,threshold:thr,disabled:false});DB.records.unshift({ts:Date.now(),type:'in',pid,skuId:sid,qty,prevQty:0,afterQty:qty,operator:op,note:'新增商品'});}
+  saveDB();closeMod('m-prod');renderProds();toast('保存成功','ok');
+}
+function openDis(pid){_disPid=pid;const p=gp(pid);document.getElementById('dis-txt').textContent=`确认停用「${p.name}」？停用后不显示在入出库选单中。`;document.getElementById('dis-op').value='';openMod('m-dis');}
+function confirmDis(){const op=document.getElementById('dis-op').value.trim();if(!op){toast('操作人员为必填项','err');return;}const p=gp(_disPid);p.disabled=true;DB.records.unshift({ts:Date.now(),type:'disable',pid:p.id,skuId:null,qty:0,prevQty:0,afterQty:0,operator:op,note:'停用商品'});saveDB();closeMod('m-dis');renderProds();toast('已停用：'+p.name,'info');}
+function enableProd(pid){gp(pid).disabled=false;saveDB();renderProds();toast('已启用','ok');}
+function openAddSku(pid){_skuPid=pid;const p=gp(pid);document.getElementById('m-sku-info').textContent=`为「${p.name}」新增规格`;if(p.a1n){document.getElementById('sk-a1l').innerHTML=p.a1n+' <span class="req">*</span>';document.getElementById('sk-a1g').style.display='flex';}else document.getElementById('sk-a1g').style.display='none';if(p.a2n){document.getElementById('sk-a2l').textContent=p.a2n;document.getElementById('sk-a2g').style.display='flex';}else document.getElementById('sk-a2g').style.display='none';['sk-a1v','sk-a2v','sk-op'].forEach(id=>document.getElementById(id).value='');document.getElementById('sk-qty').value=0;document.getElementById('sk-thr').value=3;openMod('m-sku');}
+function saveSku(){const p=gp(_skuPid);const a1v=document.getElementById('sk-a1v').value.trim();if(p.a1n&&!a1v){toast('请填写属性值','err');return;}const op=document.getElementById('sk-op').value.trim();if(!op){toast('操作人员为必填项','err');return;}const a2v=document.getElementById('sk-a2v').value.trim();const qty=parseInt(document.getElementById('sk-qty').value)||0;const thr=parseInt(document.getElementById('sk-thr').value)||3;const sid=DB._sid++;DB.skus.push({id:sid,pid:_skuPid,a1:a1v,a2:a2v,qty,threshold:thr,disabled:false});DB.records.unshift({ts:Date.now(),type:'in',pid:_skuPid,skuId:sid,qty,prevQty:0,afterQty:qty,operator:op,note:'新增规格'});saveDB();closeMod('m-sku');renderProds();toast('规格添加成功','ok');}
+
+// ===== ACCOUNTS =====
+let _resetPwId=null;
+function renderAccs(){
+  let rows='';
+  DB.accounts.forEach(a=>{
+    const rl={super:'超级管理员',admin:'管理员',staff:'员工'};const isSelf=a.id===CU.id;
+    const canEdit=CU.role==='super'||(CU.role==='admin'&&a.role==='staff');
+    const canDis=canEdit&&!isSelf&&a.role!=='super';
+    rows+=`<tr><td style="font-weight:500">${a.id}</td><td>${a.name}</td><td><span class="b ${a.role==='super'?'b-red':a.role==='admin'?'b-blue':'b-green'}">${rl[a.role]}</span></td><td>${a.disabled?'<span class="b b-gray">已停用</span>':'<span class="b b-green">正常</span>'}</td><td style="display:flex;gap:6px;flex-wrap:wrap">${canEdit?`<button class="btn btn-sm" onclick="openResetPw('${a.id}')">重置密码</button>`:''}${canDis&&!a.disabled?`<button class="btn btn-sm" style="color:var(--red)" onclick="toggleAcc('${a.id}',true)">停用</button>`:''}${canDis&&a.disabled?`<button class="btn btn-sm" onclick="toggleAcc('${a.id}',false)">启用</button>`:''}${isSelf?'<span style="font-size:11px;color:var(--ink3)">（当前账号）</span>':''}</td></tr>`;
   });
-  html += '</div>';
-  document.getElementById('prods-wrap').innerHTML = html;
+  document.getElementById('acc-tbody').innerHTML=rows||'<tr><td colspan="5" class="empty">暂无账号</td></tr>';
+}
+function openAddAcc(){document.getElementById('m-acc-title').textContent='新建账号';['acc-id','acc-name','acc-pw'].forEach(id=>document.getElementById(id).value='');document.getElementById('acc-role').value='staff';document.getElementById('acc-id').disabled=false;openMod('m-acc');}
+function saveAcc(){const id=document.getElementById('acc-id').value.trim();const name=document.getElementById('acc-name').value.trim();const role=document.getElementById('acc-role').value;const pw=document.getElementById('acc-pw').value;if(!id||!name){toast('账号和姓名为必填项','err');return;}if(!pw||pw.length<4){toast('密码至少4位','err');return;}if(DB.accounts.find(a=>a.id===id)){toast('账号已存在','err');return;}if(CU.role==='admin'&&role!=='staff'){toast('管理员只能创建普通员工账号','err');return;}DB.accounts.push({id,name,role,pw,disabled:false});saveDB();closeMod('m-acc');renderAccs();toast('账号创建成功','ok');}
+function toggleAcc(id,dis){const a=DB.accounts.find(acc=>acc.id===id);if(!a)return;a.disabled=dis;saveDB();renderAccs();toast(dis?'账号已停用':'账号已启用','info');}
+function openResetPw(id){_resetPwId=id;const a=DB.accounts.find(acc=>acc.id===id);document.getElementById('resetpw-info').textContent=`重置账号「${a.id}（${a.name}）」的密码`;document.getElementById('rpw-new').value='';document.getElementById('rpw-new2').value='';openMod('m-resetpw');}
+function doResetPw(){const np=document.getElementById('rpw-new').value;const np2=document.getElementById('rpw-new2').value;if(!np||np.length<4){toast('新密码至少4位','err');return;}if(np!==np2){toast('两次密码不一致','err');return;}const a=DB.accounts.find(acc=>acc.id===_resetPwId);a.pw=np;saveDB();closeMod('m-resetpw');toast('密码已重置','ok');}
+
+// ===== PROFILE =====
+function doChangePw(){
+  const old=document.getElementById('pw-old').value;const np=document.getElementById('pw-new').value;const np2=document.getElementById('pw-new2').value;
+  if(old!==CU.pw){toast('当前密码错误','err');return;}if(!np||np.length<4){toast('新密码至少4位','err');return;}if(np!==np2){toast('两次密码不一致','err');return;}
+  CU.pw=np;const acc=DB.accounts.find(a=>a.id===CU.id);if(acc)acc.pw=np;saveDB();
+  document.getElementById('pw-old').value='';document.getElementById('pw-new').value='';document.getElementById('pw-new2').value='';
+  toast('密码修改成功','ok');
 }
 
-function openAddProd() {
-  _editPid = null;
-  document.getElementById('m-prod-title').textContent = '新增商品';
-  ['mp-name','mp-a1n','mp-a2n','mp-a1v','mp-a2v','mp-op'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('mp-qty').value = 0;
-  document.getElementById('mp-thr').value = 3;
-  document.getElementById('mp-cat').value = '底妆类';
-  document.getElementById('mp-sku-section').style.display = 'block';
-  openMod('m-prod');
-}
-function openEditProd(pid) {
-  _editPid = pid; const p = gp(pid);
-  document.getElementById('m-prod-title').textContent = '编辑商品：' + p.name;
-  document.getElementById('mp-name').value = p.name;
-  document.getElementById('mp-cat').value = p.cat;
-  document.getElementById('mp-a1n').value = p.a1n||'';
-  document.getElementById('mp-a2n').value = p.a2n||'';
-  document.getElementById('mp-a1v').value = '';
-  document.getElementById('mp-a2v').value = '';
-  document.getElementById('mp-qty').value = 0;
-  document.getElementById('mp-thr').value = 3;
-  document.getElementById('mp-op').value = '';
-  document.getElementById('mp-sku-section').style.display = 'none';
-  openMod('m-prod');
-}
-function saveProd() {
-  const name = document.getElementById('mp-name').value.trim();
-  if (!name) { toast('请填写商品名称', 'err'); return; }
-  const op = document.getElementById('mp-op').value.trim();
-  if (!op) { toast('操作人员为必填项', 'err'); return; }
-  const cat = document.getElementById('mp-cat').value;
-  const a1n = document.getElementById('mp-a1n').value.trim();
-  const a2n = document.getElementById('mp-a2n').value.trim();
-  if (_editPid) {
-    const p = gp(_editPid); p.name=name; p.cat=cat; p.a1n=a1n; p.a2n=a2n;
-    DB.records.unshift({ts:Date.now(),type:'edit',pid:p.id,skuId:null,qty:0,prevQty:0,afterQty:0,operator:op,note:'编辑商品'});
-  } else {
-    const pid = DB._pid++;
-    DB.products.push({id:pid,name,cat,a1n,a2n,disabled:false});
-    const a1v = document.getElementById('mp-a1v').value.trim();
-    const a2v = document.getElementById('mp-a2v').value.trim();
-    const qty = parseInt(document.getElementById('mp-qty').value)||0;
-    const thr = parseInt(document.getElementById('mp-thr').value)||3;
-    const sid = DB._sid++;
-    DB.skus.push({id:sid,pid,a1:a1v,a2:a2v,qty,threshold:thr,disabled:false});
-    DB.records.unshift({ts:Date.now(),type:'in',pid,skuId:sid,qty,prevQty:0,afterQty:qty,operator:op,note:'新增商品'});
-  }
-  saveDB(); closeMod('m-prod'); renderProds(); toast('保存成功', 'ok');
-}
-function openDis(pid) {
-  _disPid = pid; const p = gp(pid);
-  document.getElementById('dis-txt').textContent = `确认停用「${p.name}」？停用后不显示在入出库选单中。`;
-  document.getElementById('dis-op').value = '';
-  openMod('m-dis');
-}
-function confirmDis() {
-  const op = document.getElementById('dis-op').value.trim();
-  if (!op) { toast('操作人员为必填项', 'err'); return; }
-  const p = gp(_disPid); p.disabled = true;
-  DB.records.unshift({ts:Date.now(),type:'disable',pid:p.id,skuId:null,qty:0,prevQty:0,afterQty:0,operator:op,note:'停用商品'});
-  saveDB(); closeMod('m-dis'); renderProds(); toast('已停用：'+p.name, 'info');
-}
-function enableProd(pid) {
-  gp(pid).disabled = false;
-  saveDB(); renderProds(); toast('已启用', 'ok');
+// ===== CLEAR ALL =====
+function doClearAll(){
+  const pw=document.getElementById('cl-pw').value;const su=DB.accounts.find(a=>a.role==='super');
+  if(!su||pw!==su.pw){toast('超管密码错误','err');return;}
+  if(!confirm('最终确认：将清空所有商品、库存、台账数据，不可撤销！'))return;
+  const last={ts:Date.now(),type:'clear',pid:null,skuId:null,qty:0,prevQty:0,afterQty:0,operator:CU.id,note:'超管一键清空'};
+  const accounts=[...DB.accounts];const pid=DB._pid,sid=DB._sid;
+  DB={products:[],skus:[],records:[last],accounts,_pid:pid,_sid:sid};
+  saveDB();document.getElementById('cl-pw').value='';toast('数据已全部清空','info');renderOv();
 }
 
-// ===== SKU =====
-function openAddSku(pid) {
-  _skuPid = pid; const p = gp(pid);
-  document.getElementById('m-sku-info').textContent = `为「${p.name}」新增规格`;
-  const a1g = document.getElementById('sk-a1g'), a2g = document.getElementById('sk-a2g');
-  if (p.a1n) { document.getElementById('sk-a1l').innerHTML=p.a1n+' <span class="req">*</span>'; a1g.style.display='flex'; }
-  else { a1g.style.display='none'; }
-  if (p.a2n) { document.getElementById('sk-a2l').textContent=p.a2n; a2g.style.display='flex'; }
-  else { a2g.style.display='none'; }
-  ['sk-a1v','sk-a2v','sk-op'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('sk-qty').value=0; document.getElementById('sk-thr').value=3;
-  openMod('m-sku');
-}
-function saveSku() {
-  const p = gp(_skuPid);
-  const a1v = document.getElementById('sk-a1v').value.trim();
-  if (p.a1n && !a1v) { toast('请填写属性值','err'); return; }
-  const op = document.getElementById('sk-op').value.trim();
-  if (!op) { toast('操作人员为必填项','err'); return; }
-  const a2v = document.getElementById('sk-a2v').value.trim();
-  const qty = parseInt(document.getElementById('sk-qty').value)||0;
-  const thr = parseInt(document.getElementById('sk-thr').value)||3;
-  const sid = DB._sid++;
-  DB.skus.push({id:sid,pid:_skuPid,a1:a1v,a2:a2v,qty,threshold:thr,disabled:false});
-  DB.records.unshift({ts:Date.now(),type:'in',pid:_skuPid,skuId:sid,qty,prevQty:0,afterQty:qty,operator:op,note:'新增规格'});
-  saveDB(); closeMod('m-sku'); renderProds(); toast('规格添加成功','ok');
-}
+// ===== EXPORT / IMPORT =====
+function exportInv(){const BOM='\uFEFF';let csv=BOM+'商品名称,分类,属性1名称,属性1值,属性2名称,属性2值,当前库存,预警值,状态\n';DB.skus.filter(s=>!s.disabled).forEach(s=>{const p=gp(s.pid);if(!p||p.disabled)return;const st=s.qty<=s.threshold?(s.qty===0?'已售罄':'需补货'):'正常';csv+=`"${p.name}","${p.cat}","${p.a1n||''}","${s.a1||''}","${p.a2n||''}","${s.a2||''}",${s.qty},${s.threshold},"${st}"\n`;});dl(csv,'yunjin_inventory_'+ds()+'.csv','text/csv;charset=utf-8');}
+function exportRecords(){const BOM='\uFEFF';let csv=BOM+'时间,类型,商品,规格,变动数量,原库存,现库存,操作人,备注\n';DB.records.forEach(r=>{const p=gp(r.pid),s=gs(r.skuId);const tl={in:'入库',out:OUT_T[r.subtype]||'出库',adjust:'盘点调整',clear:'清空',edit:'编辑',disable:'停用'}[r.type]||r.type;const ch=r.type==='in'?'+'+r.qty:r.type==='adjust'?'→'+r.qty:'-'+r.qty;csv+=`"${fmtTs(r.ts)}","${tl}","${p?p.name:'—'}","${s?skuLbl(s,p):'—'}","${ch}","${r.prevQty??'—'}","${r.afterQty??'—'}","${r.operator||'—'}","${r.note||'—'}"\n`;});dl(csv,'yunjin_records_'+ds()+'.csv','text/csv;charset=utf-8');}
+function exportJSON(){dl(JSON.stringify({exportTime:new Date().toISOString(),DB},null,2),'yunjin_backup_'+ds()+'.json','application/json');}
+function importCSV(){const file=document.getElementById('imp-csv').files[0];if(!file)return;const reader=new FileReader();reader.onload=e=>{const lines=e.target.result.replace(/^\uFEFF/,'').split('\n').filter(l=>l.trim());lines.shift();let added=0,updated=0;lines.forEach(line=>{const cols=line.split(',').map(c=>c.replace(/^"|"$/g,'').trim());if(cols.length<8)return;const[name,cat,a1n,a1v,a2n,a2v,qty,thr]=cols;let p=DB.products.find(x=>x.name===name&&x.cat===cat);if(!p){const pid=DB._pid++;p={id:pid,name,cat,a1n,a2n,disabled:false};DB.products.push(p);}let s=DB.skus.find(x=>x.pid===p.id&&x.a1===a1v&&x.a2===(a2v||''));if(s){s.qty=parseInt(qty)||0;s.threshold=parseInt(thr)||3;updated++;}else{DB.skus.push({id:DB._sid++,pid:p.id,a1:a1v,a2:a2v||'',qty:parseInt(qty)||0,threshold:parseInt(thr)||3,disabled:false});added++;}});saveDB();const res=document.getElementById('imp-res');res.style.display='block';res.style.color='var(--green)';res.textContent=`导入完成！新增 ${added} 条，更新 ${updated} 条`;toast('CSV 导入成功','ok');renderOv();};reader.readAsText(file,'UTF-8');}
+function importJSON(){const file=document.getElementById('imp-json').files[0];if(!file)return;const reader=new FileReader();reader.onload=e=>{try{const data=JSON.parse(e.target.result);if(!data.DB||!data.DB.products)throw new Error('格式不正确');DB=data.DB;if(!DB._pid)DB._pid=300;if(!DB._sid)DB._sid=3000;if(!DB.accounts)DB.accounts=buildRealDB().accounts;saveDB();toast('JSON 备份恢复成功','ok');renderOv();}catch(err){toast('JSON 格式错误：'+err.message,'err');}};reader.readAsText(file,'UTF-8');}
+function dl(content,filename,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type}));a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);}
+function ds(){const d=new Date();return d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate());}
 
-// ===================== ACCOUNTS =====================
-let _editAccId = null, _resetPwId = null;
-
-function renderAccs() {
-  let rows = '';
-  DB.accounts.forEach(a => {
-    const roleLabels = {super:'超级管理员',admin:'管理员',staff:'员工'};
-    const isSelf = a.id === CU.id;
-    const canEdit = CU.role==='super' || (CU.role==='admin' && a.role==='staff');
-    const canDis = canEdit && !isSelf && a.role !== 'super';
-    rows += `<tr>
-      <td style="font-weight:500">${a.id}</td>
-      <td>${a.name}</td>
-      <td><span class="b ${a.role==='super'?'b-red':a.role==='admin'?'b-blue':'b-green'}">${roleLabels[a.role]}</span></td>
-      <td>${a.disabled?'<span class="b b-gray">已停用</span>':'<span class="b b-green">正常</span>'}</td>
-      <td style="display:flex;gap:6px;flex-wrap:wrap">
-        ${canEdit?`<button class="btn btn-sm" onclick="openResetPw('${a.id}')">重置密码</button>`:''}
-        ${canDis && !a.disabled?`<button class="btn btn-sm" style="color:var(--red)" onclick="toggleAcc('${a.id}',true)">停用</button>`:''}
-        ${canDis && a.disabled?`<button class="btn btn-sm" onclick="toggleAcc('${a.id}',false)">启用</button>`:''}
-        ${isSelf?'<span style="font-size:11px;color:var(--ink3)">（当前账号）</span>':''}
-      </td>
-    </tr>`;
-  });
-  document.getElementById('acc-tbody').innerHTML = rows || '<tr><td colspan="5" class="empty">暂无账号</td></tr>';
-}
-
-function openAddAcc() {
-  _editAccId = null;
-  document.getElementById('m-acc-title').textContent = '新建账号';
-  ['acc-id','acc-name','acc-pw'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('acc-role').value = 'staff';
-  document.getElementById('acc-id').disabled = false;
-  document.getElementById('acc-pw-row').style.display = 'flex';
-  openMod('m-acc');
-}
-function saveAcc() {
-  const id = document.getElementById('acc-id').value.trim();
-  const name = document.getElementById('acc-name').value.trim();
-  const role = document.getElementById('acc-role').value;
-  const pw = document.getElementById('acc-pw').value;
-  if (!id||!name) { toast('账号和姓名为必填项','err'); return; }
-  if (!pw || pw.length < 4) { toast('密码至少4位','err'); return; }
-  if (DB.accounts.find(a=>a.id===id)) { toast('账号已存在，请换一个','err'); return; }
-  // admin can only create staff
-  if (CU.role==='admin' && role!=='staff') { toast('管理员只能创建普通员工账号','err'); return; }
-  DB.accounts.push({id,name,role,pw,disabled:false});
-  saveDB(); closeMod('m-acc'); renderAccs(); toast('账号创建成功','ok');
-}
-function toggleAcc(id, dis) {
-  const a = DB.accounts.find(acc=>acc.id===id);
-  if (!a) return;
-  a.disabled = dis;
-  saveDB(); renderAccs(); toast(dis?'账号已停用':'账号已启用','info');
-}
-function openResetPw(id) {
-  _resetPwId = id;
-  const a = DB.accounts.find(acc=>acc.id===id);
-  document.getElementById('resetpw-info').textContent = `重置账号「${a.id}（${a.name}）」的密码`;
-  document.getElementById('rpw-new').value=''; document.getElementById('rpw-new2').value='';
-  openMod('m-resetpw');
-}
-function doResetPw() {
-  const np = document.getElementById('rpw-new').value;
-  const np2 = document.getElementById('rpw-new2').value;
-  if (!np || np.length < 4) { toast('新密码至少4位','err'); return; }
-  if (np !== np2) { toast('两次密码不一致','err'); return; }
-  const a = DB.accounts.find(acc=>acc.id===_resetPwId);
-  a.pw = np;
-  saveDB(); closeMod('m-resetpw'); toast('密码已重置','ok');
-}
-
-// ===================== PROFILE (self pw change) =====================
-function doChangePw() {
-  const old = document.getElementById('pw-old').value;
-  const np = document.getElementById('pw-new').value;
-  const np2 = document.getElementById('pw-new2').value;
-  if (old !== CU.pw) { toast('当前密码错误','err'); return; }
-  if (!np || np.length < 4) { toast('新密码至少4位','err'); return; }
-  if (np !== np2) { toast('两次密码不一致','err'); return; }
-  CU.pw = np;
-  const acc = DB.accounts.find(a=>a.id===CU.id);
-  if (acc) acc.pw = np;
-  saveDB();
-  document.getElementById('pw-old').value=''; document.getElementById('pw-new').value=''; document.getElementById('pw-new2').value='';
-  toast('密码修改成功，下次登录生效','ok');
-}
-
-// ===================== CLEAR ALL =====================
-function doClearAll() {
-  const pw = document.getElementById('cl-pw').value;
-  const su = DB.accounts.find(a=>a.role==='super');
-  if (!su || pw !== su.pw) { toast('超管密码错误','err'); return; }
-  if (!confirm('最终确认：将清空所有商品、库存、台账数据，不可撤销！')) return;
-  const lastRec = {ts:Date.now(),type:'clear',pid:null,skuId:null,qty:0,prevQty:0,afterQty:0,operator:CU.id,note:'超管一键清空'};
-  const accounts = [...DB.accounts]; const pid = DB._pid, sid = DB._sid;
-  DB = {products:[],skus:[],records:[lastRec],accounts,_pid:pid,_sid:sid};
-  saveDB(); document.getElementById('cl-pw').value='';
-  toast('数据已全部清空','info'); renderOv();
-}
-
-// ===================== EXPORT / IMPORT =====================
-function exportInv() {
-  const BOM = '\uFEFF';
-  let csv = BOM + '商品名称,分类,属性1名称,属性1值,属性2名称,属性2值,当前库存,预警值,状态\n';
-  DB.skus.filter(s=>!s.disabled).forEach(s => {
-    const p = gp(s.pid); if (!p||p.disabled) return;
-    const st = s.qty<=s.threshold?(s.qty===0?'已售罄':'需补货'):'正常';
-    csv += `"${p.name}","${p.cat}","${p.a1n||''}","${s.a1||''}","${p.a2n||''}","${s.a2||''}",${s.qty},${s.threshold},"${st}"\n`;
-  });
-  dl(csv, 'yunjin_inventory_' + ds() + '.csv', 'text/csv;charset=utf-8');
-}
-function exportRecords() {
-  const BOM = '\uFEFF';
-  let csv = BOM + '时间,类型,商品,规格,变动数量,原库存,现库存,操作人,备注\n';
-  DB.records.forEach(r => {
-    const p = gp(r.pid), s = gs(r.skuId);
-    const tl = {in:'入库',out:OUT_T[r.subtype]||'出库',adjust:'盘点调整',clear:'清空',edit:'编辑',disable:'停用'}[r.type]||r.type;
-    const ch = r.type==='in'?'+'+r.qty:r.type==='adjust'?'→'+r.qty:'-'+r.qty;
-    csv += `"${fmtTs(r.ts)}","${tl}","${p?p.name:'—'}","${s?skuLbl(s,p):'—'}","${ch}","${r.prevQty??'—'}","${r.afterQty??'—'}","${r.operator||'—'}","${r.note||'—'}"\n`;
-  });
-  dl(csv, 'yunjin_records_' + ds() + '.csv', 'text/csv;charset=utf-8');
-}
-function exportJSON() {
-  dl(JSON.stringify({exportTime:new Date().toISOString(),DB},null,2), 'yunjin_backup_' + ds() + '.json', 'application/json');
-}
-function importCSV() {
-  const file = document.getElementById('imp-csv').files[0]; if (!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    const lines = e.target.result.replace(/^\uFEFF/,'').split('\n').filter(l=>l.trim());
-    lines.shift();
-    let added=0, updated=0;
-    lines.forEach(line => {
-      const cols = line.split(',').map(c=>c.replace(/^"|"$/g,'').trim());
-      if (cols.length < 8) return;
-      const [name,cat,a1n,a1v,a2n,a2v,qty,thr] = cols;
-      let p = DB.products.find(x=>x.name===name&&x.cat===cat);
-      if (!p) { const pid=DB._pid++; p={id:pid,name,cat,a1n,a2n,disabled:false}; DB.products.push(p); }
-      let s = DB.skus.find(x=>x.pid===p.id&&x.a1===a1v&&x.a2===(a2v||''));
-      if (s) { s.qty=parseInt(qty)||0; s.threshold=parseInt(thr)||3; updated++; }
-      else { DB.skus.push({id:DB._sid++,pid:p.id,a1:a1v,a2:a2v||'',qty:parseInt(qty)||0,threshold:parseInt(thr)||3,disabled:false}); added++; }
-    });
-    saveDB();
-    const res = document.getElementById('imp-res');
-    res.style.display='block'; res.style.color=getComputedStyle(document.documentElement).getPropertyValue('--green');
-    res.textContent=`导入完成！新增 ${added} 条，更新 ${updated} 条`;
-    toast('CSV 导入成功','ok'); renderOv();
-  };
-  reader.readAsText(file,'UTF-8');
-}
-function importJSON() {
-  const file = document.getElementById('imp-json').files[0]; if (!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    try {
-      const data = JSON.parse(e.target.result);
-      if (!data.DB || !data.DB.products) throw new Error('格式不正确');
-      DB = data.DB;
-      if (!DB._pid) DB._pid=200; if (!DB._sid) DB._sid=2000;
-      if (!DB.accounts) DB.accounts=buildDefaultDB().accounts;
-      saveDB(); toast('JSON 备份恢复成功','ok'); renderOv();
-    } catch(err) { toast('JSON 格式错误：'+err.message,'err'); }
-  };
-  reader.readAsText(file,'UTF-8');
-}
-function dl(content,filename,type) {
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(new Blob([content],{type}));
-  a.download=filename; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),1000);
-}
-function ds() { const d=new Date(); return d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate()); }
-
-// ===================== MODAL / TOAST =====================
-function openMod(id){document.getElementById(id).classList.add('open')}
-function closeMod(id){document.getElementById(id).classList.remove('open')}
-let _toastTimer;
-function toast(msg,type) {
-  const el=document.getElementById('toast');
-  el.textContent=msg; el.className='toast show t-'+({ok:'ok',err:'err',info:'info'}[type]||'info');
-  clearTimeout(_toastTimer); _toastTimer=setTimeout(()=>{el.className='toast';},3800);
-}
-document.querySelectorAll('.mover').forEach(el=>{
-  el.addEventListener('click',e=>{if(e.target===el)closeMod(el.id);});
-});
+// ===== MODAL / TOAST =====
+function openMod(id){document.getElementById(id).classList.add('open');}
+function closeMod(id){document.getElementById(id).classList.remove('open');}
+let _tt;
+function toast(msg,type){const el=document.getElementById('toast');el.textContent=msg;el.className='toast show t-'+({ok:'ok',err:'err',info:'info'}[type]||'info');clearTimeout(_tt);_tt=setTimeout(()=>{el.className='toast';},3800);}
+document.querySelectorAll('.mover').forEach(el=>{el.addEventListener('click',e=>{if(e.target===el)closeMod(el.id);});});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.mover.open').forEach(m=>m.classList.remove('open'));});
+
+// ===== OPERATOR MEMORY =====
+const OP_KEY = 'yjca_operators';
+function getOps(){try{return JSON.parse(localStorage.getItem(OP_KEY))||[];}catch(e){return[];}}
+function saveOp(name){
+  if(!name||name.trim().length<2)return;
+  name=name.trim();
+  let ops=getOps();
+  if(!ops.includes(name)){ops.unshift(name);if(ops.length>20)ops=ops.slice(0,20);localStorage.setItem(OP_KEY,JSON.stringify(ops));}
+  else{ops=ops.filter(o=>o!==name);ops.unshift(name);localStorage.setItem(OP_KEY,JSON.stringify(ops));}
+}
+function delOp(name){let ops=getOps().filter(o=>o!==name);localStorage.setItem(OP_KEY,JSON.stringify(ops));}
+
+function showOpList(fieldId){
+  const val=document.getElementById(fieldId).value.toLowerCase();
+  renderOpList(fieldId,val);
+  document.getElementById(fieldId+'-list').classList.add('open');
+}
+function filterOpList(fieldId){
+  const val=document.getElementById(fieldId).value.toLowerCase();
+  renderOpList(fieldId,val);
+  document.getElementById(fieldId+'-list').classList.add('open');
+}
+function renderOpList(fieldId,filter){
+  const ops=getOps().filter(o=>!filter||o.toLowerCase().includes(filter));
+  const listEl=document.getElementById(fieldId+'-list');
+  if(!ops.length){listEl.innerHTML='<div style="padding:10px 12px;font-size:12px;color:var(--ink3)">暂无记录，输入后自动保存</div>';return;}
+  listEl.innerHTML=ops.map(o=>`<div class="op-saved-item" onclick="selectOp('${fieldId}','${o.replace(/'/g,"\'")}')"><span>${o}</span><button class="del" onclick="event.stopPropagation();delOpAndRefresh('${fieldId}','${o.replace(/'/g,"\'")}')">✕</button></div>`).join('');
+}
+function selectOp(fieldId,name){
+  document.getElementById(fieldId).value=name;
+  document.getElementById(fieldId+'-list').classList.remove('open');
+}
+function delOpAndRefresh(fieldId,name){
+  delOp(name);
+  const val=document.getElementById(fieldId).value.toLowerCase();
+  renderOpList(fieldId,val);
+}
+// Close op lists when clicking outside
+document.addEventListener('click',function(e){
+  document.querySelectorAll('.op-saved-list.open').forEach(el=>{
+    const wrap=el.closest('.op-wrap');
+    if(wrap&&!wrap.contains(e.target))el.classList.remove('open');
+  });
+});
+// Hook into inbound / outbound / adjust saves to auto-save operator name
+const _origInbound=doInbound;
+doInbound=function(){
+  const op=document.getElementById('in-op').value.trim();
+  _origInbound();
+  // check if save succeeded by seeing if field was reset
+  if(!document.getElementById('in-op').value&&op)saveOp(op);
+};
+const _origOutbound=doOutbound;
+doOutbound=function(){
+  const op=document.getElementById('out-op').value.trim();
+  _origOutbound();
+  if(!document.getElementById('out-op').value&&op)saveOp(op);
+};
+const _origSaveAdj=saveAdj;
+saveAdj=function(){
+  const op=document.getElementById('adj-op').value.trim();
+  const prevQty=document.getElementById('adj-qty').value;
+  _origSaveAdj();
+  if(op)saveOp(op);
+};
+
 </script>
 </body>
 </html>
